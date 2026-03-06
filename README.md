@@ -508,12 +508,32 @@ A vibecoder is someone who ships real, production-quality software **by directin
 
 This is **not** "AI wrote my code." This is a new way of building:
 
-| Old way | Vibecoder way |
-|:---|:---|
-| Write every line manually | Define the system, direct the agents, review the output |
-| Bottlenecked by typing speed | Bottlenecked only by thinking speed |
-| One dev = one feature at a time | One dev = multiple modules in parallel |
-| AI as autocomplete | AI as a junior engineer you manage |
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="50%" align="center">❌ Old way</th>
+      <th width="50%" align="center">✅ Vibecoder way</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">Write every line manually</td>
+      <td align="center">Define the system, direct the agents, review the output</td>
+    </tr>
+    <tr>
+      <td align="center">Bottlenecked by typing speed</td>
+      <td align="center">Bottlenecked only by thinking speed</td>
+    </tr>
+    <tr>
+      <td align="center">One dev = one feature at a time</td>
+      <td align="center">One dev = multiple modules in parallel</td>
+    </tr>
+    <tr>
+      <td align="center">AI as autocomplete</td>
+      <td align="center">AI as a junior engineer you manage</td>
+    </tr>
+  </tbody>
+</table>
 
 Vridhira — the entire frontend + backend — is built this way. Every module, every payment integration, every security decision was **directed by Himanshu and executed with AI agents**.
 
