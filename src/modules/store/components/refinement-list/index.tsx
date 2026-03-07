@@ -4,7 +4,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useCallback, useState } from "react"
 import { HttpTypes } from "@medusajs/types"
 
-import SortProducts, { SortOptions } from "./sort-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 // Emoji map keyed by handle — fallback to 🛍️ for unknown categories
@@ -20,7 +19,6 @@ const EMOJI_MAP: Record<string, string> = {
 }
 
 type RefinementListProps = {
-  sortBy: SortOptions
   search?: boolean
   categoryHandle?: string
   categories: HttpTypes.StoreProductCategory[]
@@ -28,7 +26,6 @@ type RefinementListProps = {
 }
 
 const RefinementList = ({
-  sortBy,
   "data-testid": dataTestId,
   categoryHandle,
   categories = [],
@@ -37,7 +34,6 @@ const RefinementList = ({
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [catOpen, setCatOpen] = useState(true)
-  const [sortOpen, setSortOpen] = useState(true)
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -48,21 +44,33 @@ const RefinementList = ({
     [searchParams]
   )
 
-  const setQueryParams = (name: string, value: SortOptions) => {
-    const query = createQueryString(name, value)
-    router.push(`${pathname}?${query}`)
-  }
-
   return (
     <div
-      className="rounded-2xl overflow-hidden sticky"
+      className="rounded-2xl sticky"
       style={{
-        top: 96,  // 88px navbar + 8px breathing room
+        top: 110,  // 88px navbar + breathing room
+        maxHeight: "calc(100vh - 130px)", // prevent extending off-screen
+        overflowY: "auto",                // allow scrolling inside the sticky sidebar if categories overflow
         background: "#FFFDF9",
         border: "1px solid #E8DDD4",
         boxShadow: "0 1px 4px rgba(139, 69, 19, 0.06)",
+        // Custom scrollbar styling for the sidebar
+        scrollbarWidth: "thin",
+        scrollbarColor: "rgba(201,118,43,0.3) transparent",
       }}
     >
+      <style>{`
+        .sticky::-webkit-scrollbar {
+          width: 4px;
+        }
+        .sticky::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .sticky::-webkit-scrollbar-thumb {
+          background-color: rgba(201,118,43,0.3);
+          border-radius: 10px;
+        }
+      `}</style>
       {/* ── Categories section ── */}
       <div style={{ borderBottom: catOpen ? "1px solid #E8DDD4" : "none" }}>
         {/* Accordion header */}
@@ -146,49 +154,8 @@ const RefinementList = ({
           </ul>
         )}
       </div>
-
-      {/* ── Sort section ── */}
-      <div>
-        {/* Accordion header */}
-        <button
-          onClick={() => setSortOpen(o => !o)}
-          className="w-full flex items-center justify-between px-5 py-4 text-left"
-          style={{ background: "transparent", border: "none", cursor: "pointer" }}
-          aria-expanded={sortOpen}
-        >
-          <span
-            className="text-xs font-semibold tracking-[0.2em] uppercase"
-            style={{ color: "#C9762B" }}
-          >
-            Sort by
-          </span>
-          <svg
-            width="14" height="14" viewBox="0 0 24 24"
-            fill="none" stroke="#C9762B" strokeWidth="2.5"
-            strokeLinecap="round" strokeLinejoin="round"
-            style={{
-              transform: sortOpen ? "rotate(180deg)" : "rotate(0deg)",
-              transition: "transform 0.2s ease",
-              flexShrink: 0,
-            }}
-          >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
-        </button>
-
-        {sortOpen && (
-          <div className="px-3 pb-3">
-            <SortProducts
-              sortBy={sortBy}
-              setQueryParams={setQueryParams}
-              data-testid={dataTestId}
-            />
-          </div>
-        )}
-      </div>
     </div>
   )
 }
 
 export default RefinementList
-

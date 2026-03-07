@@ -13,6 +13,7 @@ type PaginatedProductsParams = {
   category_id?: string[]
   id?: string[]
   order?: string
+  q?: string
 }
 
 export default async function PaginatedProducts({
@@ -23,6 +24,11 @@ export default async function PaginatedProducts({
   categoryHandle,
   productsIds,
   countryCode,
+  queryString,
+  inStock,
+  isNew,
+  hasSale,
+  maxPrice,
 }: {
   sortBy?: SortOptions
   page: number
@@ -31,6 +37,11 @@ export default async function PaginatedProducts({
   categoryHandle?: string
   productsIds?: string[]
   countryCode: string
+  queryString?: string
+  inStock?: boolean
+  isNew?: boolean
+  hasSale?: boolean
+  maxPrice?: number
 }) {
   const queryParams: PaginatedProductsParams = {
     limit: 12,
@@ -57,6 +68,16 @@ export default async function PaginatedProducts({
     queryParams["order"] = "created_at"
   }
 
+  // Wire the text-search query param into Medusa's native q filter
+  if (queryString?.trim()) {
+    queryParams["q"] = queryString.trim()
+  }
+
+  // Note: Medusa v2 native API rejects unrecognized fields like `in_stock`.
+  // To avoid crashes, we do NOT inject them into `queryParams` here.
+  // Instead, we fetch standard results and filter locally below.
+
+
   const region = await getRegion(countryCode)
 
   if (!region) {
@@ -71,6 +92,53 @@ export default async function PaginatedProducts({
     sortBy,
     countryCode,
   })
+
+  // ── Local Post-Fetch Filtering ──
+  // Medusa API doesn't natively support `in_stock` filtering on the storefront
+  if (inStock) {
+    products = products.filter((p) => {
+      // Find total inventory across all variants
+      const totalInventory = p.variants?.reduce((acc, v) => acc + (v.inventory_quantity || 0), 0) || 0
+      return totalInventory > 0
+    })
+    count = products.length
+  }
+
+  if (isNew) {
+    // Simple mock filter: Latest 30 days
+    const thirtyDaysAgo = new Date()
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
+    
+    products = products.filter((p) => new Date(p.created_at) > thirtyDaysAgo)
+    count = products.length
+  }
+
+  if (maxPrice !== undefined) {
+    // Filter products where their cheapest variant is <= maxPrice
+    products = products.filter((p) => {
+      let lowestPrice = Infinity
+      p.variants?.forEach((v: any) => {
+        const calculatedPrice = v.calculated_price?.calculated_amount || v.prices?.[0]?.amount
+        if (calculatedPrice && calculatedPrice < lowestPrice) {
+          lowestPrice = calculatedPrice
+        }
+      })
+      return lowestPrice !== Infinity && lowestPrice <= maxPrice
+    })
+    count = products.length
+  }
+
+  if (hasSale) {
+    // Filter products where at least one variant has a calculated price lower than original price
+    products = products.filter((p) => {
+      return p.variants?.some((v: any) => {
+        const originalPrice = v.calculated_price?.original_amount
+        const calculatedPrice = v.calculated_price?.calculated_amount
+        return originalPrice && calculatedPrice && calculatedPrice < originalPrice
+      })
+    })
+    count = products.length
+  }
 
   const totalPages = Math.ceil(count / PRODUCT_LIMIT)
 
