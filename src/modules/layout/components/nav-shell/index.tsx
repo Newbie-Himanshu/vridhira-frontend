@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { usePathname } from "next/navigation"
+import { useEffect, useRef, useState, useCallback } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const cn = (...classes: (string | boolean | undefined | null)[]) =>
@@ -37,6 +37,45 @@ const AccountIcon = () => (
   </svg>
 )
 
+const CloseIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16" height="16"
+    viewBox="0 0 24 24"
+    fill="none" stroke="currentColor"
+    strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M18 6 6 18M6 6l12 12" />
+  </svg>
+)
+
+const ArrowRightIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="14" height="14"
+    viewBox="0 0 24 24"
+    fill="none" stroke="currentColor"
+    strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M5 12h14M12 5l7 7-7 7" />
+  </svg>
+)
+
+type SearchProduct = {
+  id: string
+  title: string
+  handle: string
+  thumbnail: string | null
+  variants?: Array<{
+    calculated_price?: {
+      calculated_amount?: number
+      currency_code?: string
+    }
+  }>
+}
+
 // ─── Math helpers ─────────────────────────────────────────────────────────────
 
 // The scroll range (px) over which the morph from bar → pill completes.
@@ -56,6 +95,18 @@ function ease(t: number): number {
   return t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2
 }
 
+// ─── WCAG background luminance helper ────────────────────────────────────────
+// Returns true when the RGB colour (0-255 range) is perceptually "dark",
+// meaning white text will have better contrast than black text.
+// Uses the WCAG 2.1 relative-luminance formula with a threshold of 0.35.
+function isColorDark(r: number, g: number, b: number): boolean {
+  const lin = (c: number) => {
+    const s = c / 255
+    return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4)
+  }
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b) < 0.35
+}
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 type Props = {
@@ -69,6 +120,7 @@ type Props = {
 
 export default function NavShell({ sideMenu, cartButton }: Props) {
   const pathname = usePathname()
+  const router = useRouter()
   const [scrollY, setScrollY] = useState(0)
   const rafRef        = useRef<number>(0)
   const floatRef      = useRef<HTMLDivElement>(null)
@@ -79,35 +131,186 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
   const rippleIdRef   = useRef(0)
   const [ripples, setRipples] = useState<{ id: number; x: number; y: number; delay: number }[]>([])
 
+  // Adaptive foreground colour — true when the section beneath the pill is dark
+  const [isDark, setIsDark] = useState(false)
+  // Ref to the outermost fixed wrapper so we can exclude our own elements from
+  // elementsFromPoint() hits during luminance sampling.
+  const outerRef = useRef<HTMLDivElement>(null)
+
+  // ─── Search state ────────────────────────────────────────────────────────
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [searchResults, setSearchResults] = useState<SearchProduct[]>([])
+  const [isSearching, setIsSearching] = useState(false)
+  const searchInputRef = useRef<HTMLInputElement>(null)
+  const searchContainerRef = useRef<HTMLDivElement>(null)
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
   useEffect(() => {
+    // ── Automatic background luminance detector ─────────────────────────────
+    // Samples the pixel column at the horizontal centre of the navbar (y=44,
+    // the vertical midpoint of the 88px bar) using document.elementsFromPoint.
+    // Works across EVERY page — no section annotations required.
+    //
+    // Walk order: topmost rendered element first.
+    // Skip: our own glass / content layers (identified via outerRef.contains).
+    // Parse: solid backgroundColor first, then first colour-stop of a gradient
+    //        backgroundImage (covers sections that use linear-gradient).
+    // Decide: WCAG luminance < 0.35 → dark bg → use light text.
+    function detectIsDark() {
+      const x = window.innerWidth / 2
+      const y = 44 // vertical centre of 88px navbar
+      for (const el of document.elementsFromPoint(x, y)) {
+        // Exclude our own navbar DOM nodes
+        if (outerRef.current?.contains(el)) continue
+        const s = window.getComputedStyle(el as HTMLElement)
+
+        // 1. Solid background-color
+        let m = s.backgroundColor.match(
+          /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/
+        )
+        if (m && (m[4] === undefined ? 1 : +m[4]) >= 0.05) {
+          setIsDark(isColorDark(+m[1], +m[2], +m[3]))
+          return
+        }
+
+        // 2. Gradient background-image — extract first colour stop
+        const bi = s.backgroundImage
+        if (bi && bi !== 'none') {
+          m = bi.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/)
+          if (m && (m[4] === undefined ? 1 : +m[4]) >= 0.05) {
+            setIsDark(isColorDark(+m[1], +m[2], +m[3]))
+            return
+          }
+        }
+      }
+      setIsDark(false) // nothing found — assume light
+    }
+
+    detectIsDark() // run once on mount for correct initial state
+
     // Use requestAnimationFrame to batch scroll updates at display refresh rate.
     // This ensures the nav is always in sync with the finger/wheel — never ahead,
     // never behind. cancelAnimationFrame prevents queued stale frames.
     const onScroll = () => {
       cancelAnimationFrame(rafRef.current)
-      rafRef.current = requestAnimationFrame(() => setScrollY(window.scrollY))
+      rafRef.current = requestAnimationFrame(() => {
+        setScrollY(window.scrollY)
+        detectIsDark()
+      })
     }
-    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
-      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener('scroll', onScroll)
       cancelAnimationFrame(rafRef.current)
     }
   }, [])
 
-  const isLandingPage = pathname === "/in" || pathname === "/"
+  // ─── Search: open → focus input ─────────────────────────────────────────
+  useEffect(() => {
+    if (isSearchOpen && searchInputRef.current) {
+      const t = setTimeout(() => searchInputRef.current?.focus(), 60)
+      return () => clearTimeout(t)
+    }
+  }, [isSearchOpen])
+
+  // ─── Search: click-outside to close ──────────────────────────────────────
+  useEffect(() => {
+    if (!isSearchOpen) return
+    const handler = (e: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(e.target as Node)) {
+        setIsSearchOpen(false)
+        setSearchQuery("")
+        setSearchResults([])
+      }
+    }
+    document.addEventListener("mousedown", handler)
+    return () => document.removeEventListener("mousedown", handler)
+  }, [isSearchOpen])
+
+  // ─── Search: Escape to close ──────────────────────────────────────────────
+  useEffect(() => {
+    if (!isSearchOpen) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsSearchOpen(false)
+        setSearchQuery("")
+        setSearchResults([])
+      }
+    }
+    document.addEventListener("keydown", handler)
+    return () => document.removeEventListener("keydown", handler)
+  }, [isSearchOpen])
+
+  // ─── Search: close on route change ───────────────────────────────────────
+  useEffect(() => {
+    setIsSearchOpen(false)
+    setSearchQuery("")
+    setSearchResults([])
+  }, [pathname])
+
+  // ─── Search: debounced product fetch ─────────────────────────────────────
+  const fetchProducts = useCallback((q: string) => {
+    if (debounceRef.current) clearTimeout(debounceRef.current)
+    if (!q.trim() || q.trim().length < 2) {
+      setSearchResults([])
+      setIsSearching(false)
+      return
+    }
+    setIsSearching(true)
+    debounceRef.current = setTimeout(async () => {
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000"
+        const pubKey = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ""
+        const res = await fetch(
+          `${baseUrl}/store/products?q=${encodeURIComponent(q.trim())}&limit=5&fields=id,title,handle,thumbnail,*variants.calculated_price`,
+          {
+            headers: {
+              "x-publishable-api-key": pubKey,
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        if (res.ok) {
+          const data = await res.json()
+          setSearchResults((data.products || []).slice(0, 5))
+        }
+      } catch {
+        // silent fail – suggestions are enhancement-only
+      } finally {
+        setIsSearching(false)
+      }
+    }, 300)
+  }, [])
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value
+    setSearchQuery(val)
+    fetchProducts(val)
+  }
+
+  const handleSearchSubmit = (e?: React.FormEvent) => {
+    e?.preventDefault()
+    if (!searchQuery.trim()) return
+    // Navigate to the localised /store page with the search query
+    const segments = pathname.split("/").filter(Boolean)
+    const countryCode = segments[0] || "in"
+    router.push(`/${countryCode}/store?q=${encodeURIComponent(searchQuery.trim())}`)
+    setIsSearchOpen(false)
+    setSearchQuery("")
+    setSearchResults([])
+  }
 
   // rawP: 0 at top, 1 when fully scrolled (capped at SCROLL_RANGE)
   // p:    eased version — slow start, fast middle, slow end
   const rawP = clamp(scrollY / SCROLL_RANGE, 0, 1)
   const p    = ease(rawP)
 
-  // Color text switches at the midpoint of the scroll animation
-  const showTransparent = isLandingPage && rawP < 0.5
-
-  const logoColor  = showTransparent ? "#FFFFFF"                                     : "#8B4513"
-  const linkColor  = showTransparent ? "text-white/80 hover:text-white"              : "text-vridhira-muted hover:text-vridhira-primary"
-  const iconColor  = showTransparent ? "text-white/80 hover:text-white"              : "text-vridhira-muted hover:text-vridhira-primary"
-  const underlineBg = showTransparent ? "bg-white"                                   : "bg-vridhira-primary"
+  // Adaptive colour — mix-blend-mode: difference on the content wrapper.
+  // All elements are white; difference blending inverts per-pixel:
+  //   white on light bg  →  appears dark (near black)   ✓ readable
+  //   white on dark bg   →  appears light (near white)  ✓ readable
+  // Zero JS needed — the browser GPU handles it for every scroll position.
 
   // ─── Scroll-driven clip-path ─────────────────────────────────────────────
   // clip-path: inset(top side bottom side round radius)
@@ -122,8 +325,8 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
 
   // ─── Background opacity & blur ───────────────────────────────────────────
   // Pill: nearly-invisible tint (0.10) — glass lives in the blur, not the fill
-  // Bar : unchanged (0.97 solid on other pages, 0 transparent on landing)
-  const bgAlpha    = isLandingPage ? lerp(0,    0.04, p) : lerp(0.97, 0.04, p)
+  // Bar : always starts transparent (0 → 0.04) across all pages — no white patch
+  const bgAlpha    = lerp(0, 0.04, p)
   const blurAmount = lerp(0, 48, p)
 
   // Drop shadow intensity grows with scroll
@@ -233,10 +436,25 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
   return (
     <>
       <style>{`
+        /* ── Adaptive content layer ──────────────────────────────────
+           Foreground colour is driven by the isDark state which is
+           sampled from the page section beneath the pill on every
+           scroll frame using WCAG luminance detection (elementsFromPoint
+           + getComputedStyle). The transition delivers a smooth 300 ms
+           cross-fade between dark-brown and warm-white as the user
+           scrolls over light ↔ dark sections.                        */
+        .nvsh-content {
+          transition: color 300ms ease;
+        }
+        /* Stacking context for the glass pill layers. */
+        .nvsh-glass-isolate {
+          isolation: isolate;
+        }
+
         /* ── Nav link: colour transition only, no box ──────────────── */
         .nvsh-link {
           position: relative;
-          transition: color 700ms ease;
+          transition: opacity 200ms ease;
         }
 
         /* ── Liquid glass: icon button hover ───────────────────────── */
@@ -305,9 +523,17 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
           mix-blend-mode: screen;
           animation: nvsh-ripple-ring 950ms cubic-bezier(0.2, 0.8, 0.4, 1) both;
         }
+
+        /* ── Search result row hover ─────────────────────────────────── */
+        .search-result-row {
+          transition: background 150ms ease;
+        }
+        .search-result-row:hover {
+          background: rgba(201,118,43,0.06);
+        }
       `}</style>
 
-      <div className="fixed top-0 left-0 w-full z-50 pointer-events-none" style={{ height: 88 }}>
+      <div ref={outerRef} className="fixed top-0 left-0 w-full z-50 pointer-events-none" style={{ height: 88 }}>
 
         {/* ══════════════════════════════════════════════════════════════
              FLOAT WRAPPER — all layers (bg + content) move together.
@@ -424,9 +650,14 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
           </div>
 
           {/* ═══ LAYER 2: Content (inside float wrapper) ══════════════
-               Moves with the pill. No clipPath — dropdowns overflow. */}
+               Moves with the pill. No clipPath — dropdowns overflow.
+               nvsh-glass-isolate: creates a new stacking context so the
+               blend mode on nvsh-content composites against ONLY the
+               pill glass layers (LAYER 1 / 1b / 1c) — not the full page.
+               nvsh-content: mix-blend-mode:difference + color:white makes
+               all text/icons auto-invert against whatever is beneath.  */}
           <div
-            className="pointer-events-none"
+            className="pointer-events-none nvsh-glass-isolate"
             style={{
               position: "absolute",
               top: `${clipTop.toFixed(1)}px`,
@@ -436,10 +667,13 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
             }}
           >
             <div
-              className="w-full h-full flex items-center relative pointer-events-auto"
+              className="nvsh-content w-full h-full flex items-center relative pointer-events-auto"
               style={{
                 paddingLeft:  `${lerp(65, 44, p).toFixed(1)}px`,
                 paddingRight: `${lerp(65, 44, p).toFixed(1)}px`,
+                // Adaptive foreground: WCAG luminance of the section beneath
+                // the pill determines whether we use light or dark text.
+                color: isDark ? '#FAF7F2' : '#2C1810',
               }}
               onClick={handleRipple}
               onMouseMove={handleMouseMove}
@@ -450,7 +684,7 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
               <div className="flex items-center gap-3">
                 <div className="lg:hidden">{sideMenu}</div>
 
-                <nav className="hidden lg:flex items-left gap-1" aria-label="Main navigation">
+                <nav className="hidden lg:flex items-center" style={{ gap: `${lerp(32, 12, p).toFixed(1)}px` }} aria-label="Main navigation">
                   {[
                     { href: "/store",       label: "Shop"        },
                     { href: "/collections", label: "Collections" },
@@ -462,17 +696,15 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
                         key={href}
                         href={href}
                         className={cn(
-                          "nvsh-link relative py-1 px-2 text-[9px] font-bold tracking-[0.14em] uppercase group whitespace-nowrap",
-                          active
-                            ? showTransparent ? "text-white" : "text-vridhira-primary"
-                            : linkColor,
+                          "nvsh-link relative py-1 px-1.5 text-[10px] font-bold tracking-[0.14em] uppercase group whitespace-nowrap",
+                          active ? "opacity-100" : "opacity-70 hover:opacity-100",
                         )}
                       >
                         {label}
+                        {/* Underline — also white so difference blend inverts it */}
                         <span
                           className={cn(
-                            "absolute -bottom-1 left-0 h-0.5 rounded-full transition-all duration-300",
-                            underlineBg,
+                            "absolute -bottom-1 left-0 h-0.5 rounded-full bg-current transition-all duration-300",
                             active ? "w-full" : "w-0 group-hover:w-full",
                           )}
                         />
@@ -485,37 +717,199 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
               {/* Center: Logo — absolutely centered */}
               <div className="absolute left-1/2 -translate-x-1/2">
                 <LocalizedClientLink href="/" aria-label="Vridhira — Home">
+                  {/* color: inherit picks up the white from nvsh-content → difference blend inverts */}
                   <span
                     className="nvsh-logo font-serif text-xl tracking-widest select-none whitespace-nowrap"
-                    style={{ color: logoColor }}
                   >
                     Vridhira
                   </span>
                 </LocalizedClientLink>
               </div>
 
-              {/* Right: Icons */}
+              {/* Right: Icons — inherit white from nvsh-content for blend-mode inversion */}
               <div className="ml-auto flex items-center gap-2">
-                <button
-                  type="button"
-                  className={cn("nvsh-icon p-1.5", iconColor)}
-                  aria-label="Search products"
-                  disabled
-                  title="Search coming soon"
-                >
-                  <SearchIcon />
-                </button>
+                {/* ── Search widget ─────────────────────────────────────────── */}
+                <div ref={searchContainerRef} className="relative hidden sm:block">
+                  {isSearchOpen ? (
+                    <>
+                      <form
+                        onSubmit={handleSearchSubmit}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          background: "rgba(255,255,255,0.18)",
+                          backdropFilter: "blur(16px)",
+                          WebkitBackdropFilter: "blur(16px)",
+                          border: "1px solid rgba(255,255,255,0.35)",
+                          borderRadius: "9999px",
+                          padding: "0 8px 0 14px",
+                          height: 36,
+                          width: 280,
+                          gap: 6,
+                          boxShadow: "0 4px 20px rgba(44,24,16,0.10), inset 0 1px 0 rgba(255,255,255,0.5)",
+                        }}
+                        className="animate-in fade-in zoom-in-95 duration-200"
+                      >
+                        <SearchIcon />
+                        <input
+                          ref={searchInputRef}
+                          type="text"
+                          value={searchQuery}
+                          onChange={handleSearchChange}
+                          placeholder="Search artisan wares…"
+                          aria-label="Search products"
+                          style={{
+                            flex: 1,
+                            background: "transparent",
+                            border: "none",
+                            outline: "none",
+                            fontSize: 13,
+                            color: "inherit",
+                            fontFamily: "inherit",
+                          }}
+                        />
+                        {searchQuery && (
+                          <button
+                            type="button"
+                            aria-label="Clear search"
+                            onClick={() => { setSearchQuery(""); setSearchResults([]); searchInputRef.current?.focus() }}
+                            style={{ opacity: 0.6, display: "flex", alignItems: "center", cursor: "pointer", background: "none", border: "none", padding: 0, color: "inherit" }}
+                          >
+                            <CloseIcon />
+                          </button>
+                        )}
+                        <button
+                          type="submit"
+                          aria-label="Submit search"
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: 28, height: 28,
+                            borderRadius: "50%",
+                            background: "rgba(201,118,43,0.85)",
+                            border: "none",
+                            cursor: "pointer",
+                            color: "#fff",
+                            flexShrink: 0,
+                          }}
+                        >
+                          <ArrowRightIcon />
+                        </button>
+                      </form>
+
+                      {/* ── Suggestions dropdown (cart-style) ────────────────── */}
+                      {(searchResults.length > 0 || isSearching) && (
+                        <div
+                          data-testid="search-dropdown"
+                          style={{
+                            position: "absolute",
+                            top: "calc(100% + 8px)",
+                            right: 0,
+                            width: 320,
+                            background: "rgba(255,253,249,0.97)",
+                            backdropFilter: "blur(24px)",
+                            WebkitBackdropFilter: "blur(24px)",
+                            border: "1px solid rgba(232,221,212,0.9)",
+                            borderRadius: 20,
+                            boxShadow: "0 20px 60px rgba(44,24,16,0.18), 0 4px 12px rgba(44,24,16,0.08)",
+                            overflow: "hidden",
+                            zIndex: 60,
+                          }}
+                          className="animate-in fade-in slide-in-from-top-2 duration-200"
+                        >
+                          {/* Header */}
+                          <div style={{ padding: "12px 16px 8px", borderBottom: "1px solid #E8DDD4" }}>
+                            <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9762B", margin: 0 }}>
+                              {isSearching ? "Searching…" : "Top Matches"}
+                            </p>
+                          </div>
+
+                          {/* Product rows */}
+                          {searchResults.map((product) => {
+                            const price = product.variants?.[0]?.calculated_price?.calculated_amount
+                            const currency = product.variants?.[0]?.calculated_price?.currency_code?.toUpperCase() ?? "INR"
+                            return (
+                              <LocalizedClientLink
+                                key={product.id}
+                                href={`/products/${product.handle}`}
+                                style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 16px", color: "#2C1810", textDecoration: "none" }}
+                                className="search-result-row"
+                                onClick={() => { setIsSearchOpen(false); setSearchQuery(""); setSearchResults([]) }}
+                              >
+                                {/* Thumbnail */}
+                                <div style={{ width: 44, height: 44, borderRadius: 10, overflow: "hidden", flexShrink: 0, background: "#F5EFE7", border: "1px solid #E8DDD4" }}>
+                                  {product.thumbnail ? (
+                                    <img src={product.thumbnail} alt={product.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                  ) : (
+                                    <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>🛍️</div>
+                                  )}
+                                </div>
+                                {/* Info */}
+                                <div style={{ flex: 1, minWidth: 0 }}>
+                                  <p style={{ margin: 0, fontSize: 13, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{product.title}</p>
+                                  {price !== undefined && (
+                                    <p style={{ margin: 0, fontSize: 11, color: "#8D6E63", marginTop: 2 }}>
+                                      {currency} {(price / 100).toLocaleString()}
+                                    </p>
+                                  )}
+                                </div>
+                                <div style={{ opacity: 0.4, flexShrink: 0 }}><ArrowRightIcon /></div>
+                              </LocalizedClientLink>
+                            )
+                          })}
+
+                          {/* Footer CTA */}
+                          <button
+                            type="button"
+                            onClick={handleSearchSubmit}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              gap: 6,
+                              width: "100%",
+                              padding: "12px 16px",
+                              borderTop: "1px solid #E8DDD4",
+                              background: "none",
+                              border: "none",
+                              borderTopColor: "#E8DDD4",
+                              borderTopWidth: 1,
+                              borderTopStyle: "solid",
+                              cursor: "pointer",
+                              fontSize: 12,
+                              fontWeight: 700,
+                              color: "#C9762B",
+                              letterSpacing: "0.05em",
+                            }}
+                          >
+                            See all results for &ldquo;{searchQuery}&rdquo; <ArrowRightIcon />
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <button
+                      type="button"
+                      className="nvsh-icon p-1.5 opacity-70 hover:opacity-100 transition-opacity"
+                      aria-label="Search products"
+                      onClick={() => setIsSearchOpen(true)}
+                    >
+                      <SearchIcon />
+                    </button>
+                  )}
+                </div>
 
                 <LocalizedClientLink
                   href="/account"
-                  className={cn("nvsh-icon hidden sm:flex p-1.5", iconColor)}
+                  className="nvsh-icon hidden sm:flex p-1.5 opacity-70 hover:opacity-100 transition-opacity"
                   aria-label="My account"
                   data-testid="nav-account-link"
                 >
                   <AccountIcon />
                 </LocalizedClientLink>
 
-                <div className={cn(iconColor, "transition-colors duration-700")}>
+                <div className="flex items-center">
                   {cartButton}
                 </div>
               </div>
