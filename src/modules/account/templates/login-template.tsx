@@ -158,19 +158,8 @@ export default function LoginTemplate() {
         </div>
       </div>
 
-      {/* ── Top-left brand pill ── */}
-      <div className="relative z-10 px-8 pt-7 flex items-center gap-2">
-        <div
-          className="w-8 h-8 rounded-lg flex items-center justify-center"
-          style={{ background: "rgba(255,255,255,0.35)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.5)" }}
-        >
-          <span className="font-serif text-sm font-bold text-[#2C1810]">V</span>
-        </div>
-        <span className="font-serif text-sm font-semibold text-[#2C1810]/80 tracking-wide">Vridhira</span>
-      </div>
-
       {/* ── Centered card ── */}
-      <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-10">
+      <div className="relative z-10 flex-1 flex items-center justify-center px-4 pt-28 pb-10">
         <div
           className="w-full max-w-[304px] rounded-[22px] px-6 py-7"
           style={{

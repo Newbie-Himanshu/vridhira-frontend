@@ -8,6 +8,7 @@ import ChevronDown from "@modules/common/icons/chevron-down"
 import User from "@modules/common/icons/user"
 import MapPin from "@modules/common/icons/map-pin"
 import Package from "@modules/common/icons/package"
+import Heart from "@modules/common/icons/heart"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { HttpTypes } from "@medusajs/types"
 import { signout } from "@lib/data/customer"
@@ -89,6 +90,97 @@ const AccountNav = ({
                   </LocalizedClientLink>
                 </li>
                 <li>
+                  <LocalizedClientLink
+                    href="/account/wishlist"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    data-testid="wishlist-link"
+                  >
+                    <div className="flex items-center gap-x-2">
+                      <Heart size={20} />
+                      <span>Wishlist</span>
+                    </div>
+                    <ChevronDown className="transform -rotate-90" />
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    href="/account/reviews"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    data-testid="reviews-link"
+                  >
+                    <div className="flex items-center gap-x-2">
+                      <span>⭐</span>
+                      <span>Reviews</span>
+                    </div>
+                    <ChevronDown className="transform -rotate-90" />
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    href="/account/track-orders"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    data-testid="track-orders-link"
+                  >
+                    <div className="flex items-center gap-x-2">
+                      <span>🚚</span>
+                      <span>Track Orders</span>
+                    </div>
+                    <ChevronDown className="transform -rotate-90" />
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    href="/account/support"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    data-testid="support-link"
+                  >
+                    <div className="flex items-center gap-x-2">
+                      <span>💬</span>
+                      <span>Support</span>
+                    </div>
+                    <ChevronDown className="transform -rotate-90" />
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    href="/account/shipping"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    data-testid="shipping-link"
+                  >
+                    <div className="flex items-center gap-x-2">
+                      <span>📮</span>
+                      <span>Shipping Info</span>
+                    </div>
+                    <ChevronDown className="transform -rotate-90" />
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    href="/account/security"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    data-testid="security-link"
+                  >
+                    <div className="flex items-center gap-x-2">
+                      <span>🔒</span>
+                      <span>Security</span>
+                    </div>
+                    <ChevronDown className="transform -rotate-90" />
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    href="/account/cod-status"
+                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    data-testid="cod-status-link"
+                  >
+                    <div className="flex items-center gap-x-2">
+                      <span>💳</span>
+                      <span>Payment Status</span>
+                    </div>
+                    <ChevronDown className="transform -rotate-90" />
+                  </LocalizedClientLink>
+                </li>
+                <li>
                   <button
                     type="button"
                     className="flex items-center justify-between py-4 border-b border-gray-200 px-8 w-full"
@@ -108,17 +200,18 @@ const AccountNav = ({
         )}
       </div>
       <div className="hidden small:block" data-testid="account-nav">
-        <div>
-          <div className="pb-4">
-            <h3 className="text-base-semi">Account</h3>
+        <div className="bg-white rounded-lg border border-gray-200 p-4 small:p-6">
+          <div className="mb-6">
+            <h3 className="text-lg font-bold text-gray-900">Menu</h3>
           </div>
           <div className="text-base-regular">
-            <ul className="flex mb-0 justify-start items-start flex-col gap-y-4">
+            <ul className="flex mb-0 justify-start items-start flex-col gap-y-1">
               <li>
                 <AccountNavLink
                   href="/account"
                   route={route!}
                   data-testid="overview-link"
+                  icon="📊"
                 >
                   Overview
                 </AccountNavLink>
@@ -128,6 +221,7 @@ const AccountNav = ({
                   href="/account/profile"
                   route={route!}
                   data-testid="profile-link"
+                  icon="👤"
                 >
                   Profile
                 </AccountNavLink>
@@ -137,6 +231,7 @@ const AccountNav = ({
                   href="/account/addresses"
                   route={route!}
                   data-testid="addresses-link"
+                  icon="📍"
                 >
                   Addresses
                 </AccountNavLink>
@@ -146,17 +241,91 @@ const AccountNav = ({
                   href="/account/orders"
                   route={route!}
                   data-testid="orders-link"
+                  icon="📦"
                 >
                   Orders
                 </AccountNavLink>
               </li>
-              <li className="text-grey-700">
+              <li>
+                <AccountNavLink
+                  href="/account/wishlist"
+                  route={route!}
+                  data-testid="wishlist-link"
+                  icon="❤️"
+                >
+                  Wishlist
+                </AccountNavLink>
+              </li>
+              <li>
+                <AccountNavLink
+                  href="/account/reviews"
+                  route={route!}
+                  data-testid="reviews-link"
+                  icon="⭐"
+                >
+                  Reviews
+                </AccountNavLink>
+              </li>
+              <li>
+                <AccountNavLink
+                  href="/account/track-orders"
+                  route={route!}
+                  data-testid="track-orders-link"
+                  icon="🚚"
+                >
+                  Track Orders
+                </AccountNavLink>
+              </li>
+              <li>
+                <AccountNavLink
+                  href="/account/support"
+                  route={route!}
+                  data-testid="support-link"
+                  icon="💬"
+                >
+                  Support
+                </AccountNavLink>
+              </li>
+              <li>
+                <AccountNavLink
+                  href="/account/shipping"
+                  route={route!}
+                  data-testid="shipping-link"
+                  icon="📮"
+                >
+                  Shipping Info
+                </AccountNavLink>
+              </li>
+              <li>
+                <AccountNavLink
+                  href="/account/security"
+                  route={route!}
+                  data-testid="security-link"
+                  icon="🔒"
+                >
+                  Security
+                </AccountNavLink>
+              </li>
+              <li>
+                <AccountNavLink
+                  href="/account/cod-status"
+                  route={route!}
+                  data-testid="cod-status-link"
+                  icon="💳"
+                >
+                  Payment Status
+                </AccountNavLink>
+              </li>
+              <li className="pt-4 mt-4 border-t border-gray-200 w-full">
                 <button
                   type="button"
                   onClick={handleLogout}
                   data-testid="logout-button"
+                  className={clx("text-ui-fg-subtle text-sm font-medium hover:text-ui-fg-base px-3 py-2 rounded-md transition-colors w-full text-left", {
+                    "text-ui-fg-base font-semibold": false,
+                  })}
                 >
-                  Log out
+                  🚪 Log out
                 </button>
               </li>
             </ul>
@@ -172,6 +341,7 @@ type AccountNavLinkProps = {
   route: string
   children: React.ReactNode
   "data-testid"?: string
+  icon?: string
 }
 
 const AccountNavLink = ({
@@ -179,6 +349,7 @@ const AccountNavLink = ({
   route,
   children,
   "data-testid": dataTestId,
+  icon,
 }: AccountNavLinkProps) => {
   const { countryCode }: { countryCode: string } = useParams()
 
@@ -186,12 +357,14 @@ const AccountNavLink = ({
   return (
     <LocalizedClientLink
       href={href}
-      className={clx("text-ui-fg-subtle hover:text-ui-fg-base", {
-        "text-ui-fg-base font-semibold": active,
+      className={clx("flex items-center gap-x-3 px-3 py-2 rounded-md text-sm font-medium transition-all", {
+        "text-gray-900 bg-blue-50 border-l-4 border-blue-600": active,
+        "text-gray-600 hover:text-gray-900 hover:bg-gray-100": !active,
       })}
       data-testid={dataTestId}
     >
-      {children}
+      {icon && <span className="text-lg">{icon}</span>}
+      <span>{children}</span>
     </LocalizedClientLink>
   )
 }
