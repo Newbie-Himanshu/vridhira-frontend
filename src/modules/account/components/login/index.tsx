@@ -2,6 +2,7 @@ import { login } from "@lib/data/customer"
 import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
+import { getBackendURL } from "@lib/util/env"
 import { useActionState } from "react"
 
 type Props = {
@@ -12,7 +13,8 @@ const Login = ({ setCurrentView }: Props) => {
   const [message, formAction] = useActionState(login, null)
 
   const handleGoogleLogin = () => {
-    window.location.href = `http://localhost:9000/auth/customer/google`
+    const backendURL = getBackendURL()
+    window.location.href = `${backendURL}/auth/customer/google`
   }
 
   return (

@@ -1,0 +1,37 @@
+name: CI — Storefront
+
+on:
+  push:
+    branches: [development]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint-and-build:
+    name: Lint & Build Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeScript type check
+        run: npx tsc --noEmit
+
+      - name: Build (validates production output)
+        run: npm run build
+        env:
+          MEDUSA_BACKEND_URL: https://admin.vridhira.in
+          NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY }}
+          NEXT_PUBLIC_BASE_URL: https://vridhira.in
+          NEXT_PUBLIC_DEFAULT_REGION: in
+          REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
