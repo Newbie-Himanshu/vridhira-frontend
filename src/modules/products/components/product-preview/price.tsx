@@ -1,4 +1,4 @@
-import { VariantPrice } from "types/global"
+import { VariantPrice } from "../../../../types/global"
 
 export default function PreviewPrice({ price }: { price: VariantPrice }) {
   if (!price) {
