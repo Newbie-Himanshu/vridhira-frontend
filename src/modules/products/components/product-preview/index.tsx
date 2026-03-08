@@ -3,6 +3,8 @@
 import { getProductPrice } from "@lib/util/get-product-price"
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { useToast } from "@modules/common/contexts/toast-context"
+import { addToWishlist, removeFromWishlist } from "@lib/data/wishlist"
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
 import { useState } from "react"
@@ -18,8 +20,11 @@ export default function ProductPreview({
   region: HttpTypes.StoreRegion
 }) {
   const { cheapestPrice } = getProductPrice({ product })
+  const { addToast } = useToast()
   const [isWishlisted, setIsWishlisted] = useState(false)
   const [isAdding, setIsAdding] = useState(false)
+  const [isWishlistLoading, setIsWishlistLoading] = useState(false)
+  const [wishlistItemId, setWishlistItemId] = useState<string | null>(null)
 
   // Extract a few variant option values to show as "chips" (e.g., shoe sizes, colors)
   // We'll just take unique values from the first two options mapped across all variants to keep it brief
@@ -42,7 +47,7 @@ export default function ProductPreview({
     e.stopPropagation()
 
     if (!isQuickAddable || !product.variants?.[0]?.id) return
-    
+
     setIsAdding(true)
     await addToCart({
       variantId: product.variants[0].id,
@@ -50,6 +55,46 @@ export default function ProductPreview({
       countryCode: region.currency_code.toLowerCase(), // Note: actual cart uses countryCode, region usually has it but we might need to fallback
     }).catch(() => {})
     setIsAdding(false)
+  }
+
+  const handleWishlistToggle = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    setIsWishlistLoading(true)
+
+    try {
+      if (isWishlisted && wishlistItemId) {
+        // Remove from wishlist
+        const success = await removeFromWishlist(wishlistItemId)
+        if (success) {
+          setIsWishlisted(false)
+          setWishlistItemId(null)
+          addToast("Removed from wishlist", "success", 2000)
+        } else {
+          addToast("Failed to remove from wishlist", "error", 3000)
+        }
+      } else {
+        // Add to wishlist
+        const variantId = product.variants?.[0]?.id
+        const result = await addToWishlist(product.id, variantId)
+        if (result?.item) {
+          setIsWishlisted(true)
+          setWishlistItemId(result.item.id)
+          if (result.alreadyExists) {
+            addToast("Already in your wishlist", "info", 2000)
+          } else {
+            addToast("Added to wishlist ❤️", "success", 2000)
+          }
+        } else {
+          addToast("Failed to add to wishlist", "error", 3000)
+        }
+      }
+    } catch (error) {
+      addToast("Something went wrong", "error", 3000)
+    } finally {
+      setIsWishlistLoading(false)
+    }
   }
 
   return (
@@ -77,12 +122,9 @@ export default function ProductPreview({
 
         {/* Wishlist Button (Absolute Top Right) */}
         <button
-          onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            setIsWishlisted(!isWishlisted)
-          }}
-          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200"
+          onClick={handleWishlistToggle}
+          disabled={isWishlistLoading}
+          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 disabled:opacity-50"
           style={{
             background: isWishlisted ? "rgba(220, 38, 38, 0.1)" : "rgba(255,255,255,0.4)",
             backdropFilter: "blur(4px)",
@@ -90,12 +132,12 @@ export default function ProductPreview({
           }}
           aria-label="Toggle Wishlist"
         >
-          <svg 
-            width="16" height="16" viewBox="0 0 24 24" 
-            fill={isWishlisted ? "#DC2626" : "none"} 
-            stroke={isWishlisted ? "#DC2626" : "#5C4033"} 
+          <svg
+            width="16" height="16" viewBox="0 0 24 24"
+            fill={isWishlisted ? "#DC2626" : "none"}
+            stroke={isWishlisted ? "#DC2626" : "#5C4033"}
             strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-            className="transition-colors duration-200"
+            className={`transition-all duration-200 ${isWishlistLoading ? "animate-pulse" : ""}`}
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
