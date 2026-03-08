@@ -6,6 +6,7 @@ import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { signup } from "@lib/data/customer"
+import { getBackendURL } from "@lib/util/env"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
@@ -15,7 +16,8 @@ const Register = ({ setCurrentView }: Props) => {
   const [message, formAction] = useActionState(signup, null)
 
   const handleGoogleSignup = () => {
-    window.location.href = `http://localhost:9000/auth/customer/google`
+    const backendURL = getBackendURL()
+    window.location.href = `${backendURL}/auth/customer/google`
   }
 
   const inputClass =
