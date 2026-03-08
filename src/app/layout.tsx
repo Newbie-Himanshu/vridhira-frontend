@@ -19,6 +19,8 @@ import { getBaseURL } from "@lib/util/env"
 import { Metadata } from "next"
 import { Plus_Jakarta_Sans, Playfair_Display, Tiro_Devanagari_Hindi, DM_Sans } from "next/font/google"
 import "../styles/globals.css"
+import { ToastProvider } from "@modules/common/contexts/toast-context"
+import { ToastContainer } from "@modules/common/components/toast-container"
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -60,7 +62,10 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       className={`${plusJakartaSans.variable} ${playfairDisplay.variable} ${tiroDevanagariHindi.variable} ${dmSans.variable}`}
     >
       <body>
-        <main className="relative">{props.children}</main>
+        <ToastProvider>
+          <main className="relative">{props.children}</main>
+          <ToastContainer />
+        </ToastProvider>
       </body>
     </html>
   )

@@ -88,8 +88,7 @@ function clamp(v: number, lo: number, hi: number) { return Math.min(Math.max(v, 
 
 // ─── Component ────────────────────────────────────────────────────────────────
 const Hero = () => {
-  const [entered,   setEntered]   = useState(false)
-  const [ctaOffset, setCtaOffset] = useState({ x: 0, y: 0 })
+  const [entered, setEntered] = useState(false)
 
   const sectionRef   = useRef<HTMLElement>(null)
   const canvasRef    = useRef<HTMLCanvasElement>(null)
@@ -159,7 +158,17 @@ const Hero = () => {
     }
 
     draw()
-    return () => { cancelAnimationFrame(rafDrawRef.current); ro.disconnect() }
+    // Pause the RAF loop when the hero is fully scrolled out of view
+    const visObs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (!rafDrawRef.current) draw()
+      } else {
+        cancelAnimationFrame(rafDrawRef.current)
+        rafDrawRef.current = 0
+      }
+    }, { threshold: 0 })
+    visObs.observe(canvas)
+    return () => { cancelAnimationFrame(rafDrawRef.current); ro.disconnect(); visObs.disconnect() }
   }, [])
 
   // ── Magnetic CTA ─────────────────────────────────────────────────────────
@@ -175,14 +184,15 @@ const Hero = () => {
     const dist = Math.hypot(dx, dy)
     if (dist < 130) {
       const s = (1 - dist / 130) * 0.4
-      setCtaOffset({ x: dx * s, y: dy * s })
+      wrap.style.transform = `translate(${dx * s}px, ${dy * s}px)`
     } else {
-      // Avoid redundant re-renders when already at (0,0)
-      setCtaOffset(prev => (prev.x === 0 && prev.y === 0) ? prev : { x: 0, y: 0 })
+      wrap.style.transform = "translate(0px, 0px)"
     }
   }, [])
 
-  const handleMouseLeave = useCallback(() => setCtaOffset({ x: 0, y: 0 }), [])
+  const handleMouseLeave = useCallback(() => {
+    if (ctaWrapRef.current) ctaWrapRef.current.style.transform = "translate(0px, 0px)"
+  }, [])
 
   // ── Scroll to CategoryStrip ───────────────────────────────────────────────
   // Native smooth scroll — no RAF loop, no scroll lock, no velocity tracking.
@@ -380,7 +390,7 @@ const Hero = () => {
                   ref={ctaWrapRef}
                   style={{
                     display: "inline-block",
-                    transform: `translate(${ctaOffset.x}px, ${ctaOffset.y}px)`,
+                    transform: "translate(0px, 0px)",
                     transition: "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)",
                   }}
                 >

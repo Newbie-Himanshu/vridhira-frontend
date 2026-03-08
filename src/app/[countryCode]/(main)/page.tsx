@@ -20,10 +20,10 @@ export default async function Home(props: {
   const params = await props.params
   const { countryCode } = params
 
-  const region = await getRegion(countryCode)
-  const { collections } = await listCollections({
-    fields: "id, handle, title",
-  })
+  const [region, { collections }] = await Promise.all([
+    getRegion(countryCode),
+    listCollections({ fields: "id, handle, title" }),
+  ])
 
   return (
     <>
