@@ -11,7 +11,7 @@
  * @lastModifiedBy  Himanshu
  * @modifiedWith    GitHub Copilot
  * @modifiedOn      2026-03-06
- * @changeNote      Initial creation of himanshuCredits component
+ * @changeNote      Initial creation of ProjectCredits component
  * ============================================================
  */
 
@@ -19,7 +19,7 @@ import React from "react"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type himanshuCreditsProps = {
+type ProjectCreditsProps = {
   /** Controls visual weight. Use 'full' in footer, 'minimal' in tight spaces */
   variant?: "full" | "minimal"
   /** Optional custom class overrides for the wrapper */
@@ -51,7 +51,7 @@ const GitHubIcon = () => (
 const FOOTER_LINKS: Array<{ label: string; href: string; Icon: React.FC }> = [
   {
     label: "frontend",
-    href: "https://github.com/Himanshu/frontend",
+    href: "https://github.com/Newbie-Himanshu/frontend",
     Icon: GitHubIcon,
   },
   // ← Future: LinkedIn, Twitter/X, Instagram go here
@@ -60,23 +60,23 @@ const FOOTER_LINKS: Array<{ label: string; href: string; Icon: React.FC }> = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 /**
- * himanshuCredits
+ * ProjectCredits
  *
  * Renders visible author credits for Himanshu in the storefront footer.
  * This is a Server Component — no client-side logic needed.
  *
  * Usage:
- *   <himanshuCredits />                    ← full variant (default)
- *   <himanshuCredits variant="minimal" />  ← one-liner for tight spaces
+ *   <ProjectCredits />                    ← full variant (default)
+ *   <ProjectCredits variant="minimal" />  ← one-liner for tight spaces
  */
-const himanshuCredits: React.FC<himanshuCreditsProps> = ({
+const ProjectCredits: React.FC<ProjectCreditsProps> = ({
   variant = "full",
   className = "",
 }) => {
   if (variant === "minimal") {
     return (
       <p
-        className={`text-xs text-Himanshu-muted text-center ${className}`}
+        className={`text-xs text-himanshu-muted text-center ${className}`}
         aria-label="Project credits"
       >
         Built with ❤️ by{" "}
@@ -84,7 +84,7 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
           href="https://github.com/Newbie-Himanshu"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-Himanshu-primary transition-colors"
+          className="underline underline-offset-2 hover:text-himanshu-primary transition-colors"
         >
           Himanshu
         </a>
@@ -95,28 +95,28 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
 
   return (
     <section
-      className={`border-t border-Himanshu-border pt-6 mt-6 ${className}`}
+      className={`border-t border-himanshu-border pt-6 mt-6 ${className}`}
       aria-label="Project credits and attribution"
     >
       {/* Divider */}
       <div className="flex items-center gap-3 mb-4">
-        <div className="h-px flex-1 bg-Himanshu-border" aria-hidden="true" />
-        <span className="text-xs text-Himanshu-muted font-medium tracking-widest uppercase">
+        <div className="h-px flex-1 bg-himanshu-border" aria-hidden="true" />
+        <span className="text-xs text-himanshu-muted font-medium tracking-widest uppercase">
           Crafted by
         </span>
-        <div className="h-px flex-1 bg-Himanshu-border" aria-hidden="true" />
+        <div className="h-px flex-1 bg-himanshu-border" aria-hidden="true" />
       </div>
 
       {/* Main credits card */}
       <div className="flex flex-col items-center gap-3 text-center">
         {/* Name */}
-        <p className="text-sm font-semibold text-Himanshu-text">
+        <p className="text-sm font-semibold text-himanshu-text">
           Himanshu
         </p>
 
         {/* Tagline */}
-        <p className="text-xs text-Himanshu-muted max-w-xs leading-relaxed">
-          Building Himanshu independently — an open platform for India&apos;s artisans.
+        <p className="text-xs text-himanshu-muted max-w-xs leading-relaxed">
+          Building The Storefront independently — an open platform for India&apos;s artisans.
         </p>
 
         {/* Social / repo links (brand org only — visible to website visitors) */}
@@ -132,7 +132,7 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${label} on GitHub`}
-                  className="flex items-center gap-1.5 text-xs text-Himanshu-muted hover:text-Himanshu-primary transition-colors"
+                  className="flex items-center gap-1.5 text-xs text-himanshu-muted hover:text-himanshu-primary transition-colors"
                 >
                   <Icon />
                   <span>{label}</span>
@@ -143,18 +143,18 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
         )}
 
         {/* Copyright */}
-        <p className="text-xs text-Himanshu-muted mt-1">
+        <p className="text-xs text-himanshu-muted mt-1">
           © {new Date().getFullYear()} Himanshu. All rights reserved.
         </p>
 
         {/* Framework acknowledgment */}
-        <p className="text-xs text-Himanshu-muted">
+        <p className="text-xs text-himanshu-muted">
           Built using{" "}
           <a
             href="https://github.com/medusajs/medusa"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-Himanshu-primary transition-colors"
+            className="underline underline-offset-2 hover:text-himanshu-primary transition-colors"
           >
             MedusaJS
           </a>{" "}
@@ -165,4 +165,4 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
   )
 }
 
-export default himanshuCredits
+export default ProjectCredits

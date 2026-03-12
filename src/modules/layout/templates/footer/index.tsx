@@ -16,7 +16,7 @@
  */
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import himanshuCredits from "@modules/layout/components/Himanshu-credits"
+import ProjectCredits from "@modules/layout/components/vridhira-credits"
 
 // ─── Social brand icons (inline SVG, server-safe) ────────────────────────────
 
@@ -49,10 +49,10 @@ const ThreadsIcon = () => (
 
 // Single source of truth for all social links — used in both Connect column and bottom strip
 const SOCIAL_LINKS = [
-  { label: "Instagram", href: "https://www.instagram.com/Himanshu.in",                Icon: InstagramIcon },
+  { label: "Instagram", href: "https://www.instagram.com/himanshu.in",                Icon: InstagramIcon },
   { label: "Facebook",  href: "https://facebook.com/profile.php?id=61584546327635",  Icon: FacebookIcon  },
-  { label: "Threads",   href: "https://threads.net/Himanshu.in",                     Icon: ThreadsIcon   },
-  { label: "GitHub",    href: "https://github.com/Himanshu/frontend",       Icon: GitHubIcon    },
+  { label: "Threads",   href: "https://threads.net/himanshu.in",                     Icon: ThreadsIcon   },
+  { label: "GitHub",    href: "https://github.com/Newbie-Himanshu/frontend",       Icon: GitHubIcon    },
 ]
 
 export default async function Footer() {
@@ -80,7 +80,7 @@ export default async function Footer() {
 
             {/* Col 1 — Customer Services */}
             <div className="px-8 py-5" style={{ borderRight: "1px solid #C4B5A5" }}>
-              <h3 className="font-dm text-[13px] font-bold tracking-[0.05em] uppercase text-Himanshu-text mb-4">
+              <h3 className="font-dm text-[13px] font-bold tracking-[0.05em] uppercase text-himanshu-text mb-4">
                 Customer Services
               </h3>
               <ul className="flex flex-col gap-[12px]">
@@ -94,7 +94,7 @@ export default async function Footer() {
                   <li key={label}>
                     <LocalizedClientLink
                       href={href}
-                      className="font-dm text-sm font-normal text-Himanshu-muted hover:text-Himanshu-primary transition-colors duration-200"
+                      className="font-dm text-sm font-normal text-himanshu-muted hover:text-himanshu-primary transition-colors duration-200"
                     >
                       {label}
                     </LocalizedClientLink>
@@ -105,7 +105,7 @@ export default async function Footer() {
 
             {/* Col 2 — About */}
             <div className="px-8 py-5" style={{ borderRight: "1px solid #C4B5A5" }}>
-              <h3 className="font-dm text-[13px] font-bold tracking-[0.05em] uppercase text-Himanshu-text mb-4">
+              <h3 className="font-dm text-[13px] font-bold tracking-[0.05em] uppercase text-himanshu-text mb-4">
                 About
               </h3>
               <ul className="flex flex-col gap-[12px]">
@@ -119,7 +119,7 @@ export default async function Footer() {
                   <li key={label}>
                     <LocalizedClientLink
                       href={href}
-                      className="font-dm text-sm font-normal text-Himanshu-muted hover:text-Himanshu-primary transition-colors duration-200"
+                      className="font-dm text-sm font-normal text-himanshu-muted hover:text-himanshu-primary transition-colors duration-200"
                     >
                       {label}
                     </LocalizedClientLink>
@@ -130,7 +130,7 @@ export default async function Footer() {
 
             {/* Col 3 — Connect */}
             <div className="px-8 py-5">
-              <h3 className="font-dm text-[13px] font-bold tracking-[0.05em] uppercase text-Himanshu-text mb-4">
+              <h3 className="font-dm text-[13px] font-bold tracking-[0.05em] uppercase text-himanshu-text mb-4">
                 Connect
               </h3>
               <ul className="flex flex-col gap-[12px]">
@@ -140,7 +140,7 @@ export default async function Footer() {
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2.5 font-dm text-sm font-normal text-Himanshu-muted hover:text-Himanshu-primary transition-colors duration-200"
+                      className="flex items-center gap-2.5 font-dm text-sm font-normal text-himanshu-muted hover:text-himanshu-primary transition-colors duration-200"
                     >
                       <Icon />
                       {label}
@@ -159,7 +159,7 @@ export default async function Footer() {
               <LocalizedClientLink
                 href="/help-center"
                 aria-label="Help Center"
-                className="flex items-center gap-1.5 text-xs text-Himanshu-muted hover:text-Himanshu-primary transition-colors duration-200"
+                className="flex items-center gap-1.5 text-xs text-himanshu-muted hover:text-himanshu-primary transition-colors duration-200"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" />
@@ -171,7 +171,7 @@ export default async function Footer() {
             </div>
 
             {/* Center — credits text */}
-            <p className="text-xs text-center flex-shrink-0 text-Himanshu-muted">
+            <p className="text-xs text-center flex-shrink-0 text-himanshu-muted">
               Built with{" "}
               <span role="img" aria-label="love">❤️</span>
               {" "}by{" "}
@@ -179,7 +179,7 @@ export default async function Footer() {
                 href="https://github.com/Newbie-Himanshu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-Himanshu-primary transition-colors"
+                className="underline underline-offset-2 hover:text-himanshu-primary transition-colors"
                 style={{ color: "#8B4513" }}
               >
                 Himanshu
@@ -197,7 +197,7 @@ export default async function Footer() {
                   rel="noopener noreferrer"
                   aria-label={`Himanshu on ${label}`}
                   title={label}
-                  className="w-7 h-7 flex items-center justify-center rounded-full text-Himanshu-muted hover:text-Himanshu-primary hover:scale-110 transition-all duration-200"
+                  className="w-7 h-7 flex items-center justify-center rounded-full text-himanshu-muted hover:text-himanshu-primary hover:scale-110 transition-all duration-200"
                 >
                   <Icon />
                 </a>
