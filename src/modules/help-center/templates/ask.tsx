@@ -15,17 +15,17 @@ export default function AskTemplate() {
     >
       {/* ── Breadcrumb strip ── */}
       <div
-        className="border-y border-himanshu-border/40 bg-white/60 backdrop-blur-sm"
+        className="border-y border-Himanshu-border/40 bg-white/60 backdrop-blur-sm"
         aria-label="Breadcrumb"
       >
         <div className="content-container py-2.5">
-          <ol className="flex items-center gap-1 text-[13px] font-dm text-himanshu-muted flex-wrap">
+          <ol className="flex items-center gap-1 text-[13px] font-dm text-Himanshu-muted flex-wrap">
             {/* Home */}
             <li>
               <LocalizedClientLink
                 href="/"
                 aria-label="Home"
-                className="flex items-center gap-1 hover:text-himanshu-accent transition-colors px-2 py-1 rounded-md hover:bg-himanshu-surface"
+                className="flex items-center gap-1 hover:text-Himanshu-accent transition-colors px-2 py-1 rounded-md hover:bg-Himanshu-surface"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -45,7 +45,7 @@ export default function AskTemplate() {
             <li>
               <LocalizedClientLink
                 href="/help-center"
-                className="px-2 py-1 rounded-md transition-colors hover:bg-himanshu-surface hover:text-himanshu-accent"
+                className="px-2 py-1 rounded-md transition-colors hover:bg-Himanshu-surface hover:text-Himanshu-accent"
               >
                 Help Center
               </LocalizedClientLink>
@@ -89,7 +89,7 @@ export default function AskTemplate() {
           >
             {/* Card header */}
             <div
-              className="px-8 pt-8 pb-6 border-b border-himanshu-border"
+              className="px-8 pt-8 pb-6 border-b border-Himanshu-border"
               style={{ background: "linear-gradient(135deg, #FAF7F2 0%, #F5EFE7 100%)" }}
             >
               {/* Icon */}
@@ -108,10 +108,10 @@ export default function AskTemplate() {
                   <path d="M12 17h.01" />
                 </svg>
               </div>
-              <h1 className="font-serif font-semibold text-2xl md:text-3xl text-himanshu-text leading-tight tracking-tight">
+              <h1 className="font-serif font-semibold text-2xl md:text-3xl text-Himanshu-text leading-tight tracking-tight">
                 Ask a Question
               </h1>
-              <p className="font-dm text-sm text-himanshu-muted mt-2 leading-relaxed">
+              <p className="font-dm text-sm text-Himanshu-muted mt-2 leading-relaxed">
                 Can&apos;t find what you&apos;re looking for? Our support team will reply personally.
               </p>
             </div>
@@ -140,7 +140,7 @@ export default function AskTemplate() {
                   Response Time
                 </p>
               </div>
-              <p className="font-dm text-[13px] text-himanshu-text leading-relaxed">
+              <p className="font-dm text-[13px] text-Himanshu-text leading-relaxed">
                 We typically respond within <strong>1–2 business days</strong>. Urgent issues are
                 prioritised for same-day handling.
               </p>
@@ -151,7 +151,7 @@ export default function AskTemplate() {
               className="rounded-2xl px-6 py-5"
               style={{ background: "#FFFFFF", border: "1px solid #E8DDD4" }}
             >
-              <p className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-himanshu-muted/70 mb-3">
+              <p className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-Himanshu-muted/70 mb-3">
                 Quick Answers
               </p>
               <ul className="flex flex-col gap-2">
@@ -165,7 +165,7 @@ export default function AskTemplate() {
                   <li key={href}>
                     <LocalizedClientLink
                       href={href}
-                      className="flex items-center gap-2 font-dm text-[13px] text-himanshu-muted hover:text-himanshu-accent transition-colors group"
+                      className="flex items-center gap-2 font-dm text-[13px] text-Himanshu-muted hover:text-Himanshu-accent transition-colors group"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none"
                            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
@@ -182,7 +182,7 @@ export default function AskTemplate() {
             {/* Back link */}
             <LocalizedClientLink
               href="/help-center"
-              className="flex items-center gap-2 font-dm text-[13px] text-himanshu-muted hover:text-himanshu-accent transition-colors"
+              className="flex items-center gap-2 font-dm text-[13px] text-Himanshu-muted hover:text-Himanshu-accent transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none"
                    stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"

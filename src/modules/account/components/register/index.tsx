@@ -48,7 +48,7 @@ const Register = ({ setCurrentView }: Props) => {
         Create your account
       </h2>
       <p className="text-center text-[11px] text-[#8D6E63] mb-5 leading-relaxed">
-        Join himanshu and discover artisan heritage<br/>crafted with love.
+        Join Himanshu and discover artisan heritage<br/>crafted with love.
       </p>
 
       {/* Form */}

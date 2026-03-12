@@ -1,17 +1,17 @@
 /**
  * ============================================================
- * himanshu — E-Commerce for Indian Artisans
+ * Himanshu — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
- * @repo        https://github.com/Newbie-Himanshu/himanshu-frontend
- * @copyright   2026 Himanshu — himanshu. All rights reserved.
+ * @repo        https://github.com/Newbie-Himanshu/Himanshu-frontend
+ * @copyright   2026 Himanshu — Himanshu. All rights reserved.
  * @license     MIT
  * ------------------------------------------------------------
  * @lastModifiedBy  Himanshu
  * @modifiedWith    GitHub Copilot
  * @modifiedOn      2026-03-06
- * @changeNote      Added himanshu brand color tokens and custom font families
+ * @changeNote      Added Himanshu brand color tokens and custom font families
  * ============================================================
  */
 
@@ -51,8 +51,8 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
-        // himanshu brand palette
-        himanshu: {
+        // Himanshu brand palette
+        Himanshu: {
           primary:    "#8B4513",  // Saddle brown — earthy, warm, artisan
           secondary:  "#D4A574",  // Warm sand
           accent:     "#C9762B",  // Burnt sienna — CTA color

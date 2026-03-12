@@ -4,7 +4,7 @@ import { SortOptions } from "@modules/store/components/refinement-list/sort-prod
 import StoreTemplate from "@modules/store/templates"
 
 export const metadata: Metadata = {
-  title: "Artisan Shop | himanshu",
+  title: "Artisan Shop | Himanshu",
   description: "Discover authentic handmade goods from India's artisans — pottery, textiles, jewellery, woodcraft and more.",
 }
 

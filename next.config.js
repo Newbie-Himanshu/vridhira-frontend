@@ -1,17 +1,17 @@
 /**
  * ============================================================
- * himanshu — E-Commerce for Indian Artisans
+ * Himanshu — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
- * @repo        https://github.com/Newbie-Himanshu/himanshu-frontend
- * @copyright   2026 Himanshu — himanshu. All rights reserved.
+ * @repo        https://github.com/Newbie-Himanshu/Himanshu-frontend
+ * @copyright   2026 Himanshu — Himanshu. All rights reserved.
  * @license     MIT
  * ------------------------------------------------------------
  * @lastModifiedBy  Himanshu
  * @modifiedWith    GitHub Copilot
  * @modifiedOn      2026-03-06
- * @changeNote      Added himanshu credit block
+ * @changeNote      Added Himanshu credit block
  * ============================================================
  */
 

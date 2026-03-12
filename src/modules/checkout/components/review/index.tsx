@@ -48,7 +48,7 @@ const Review = ({ cart }: { cart: any }) => {
               <Text className="text-[#8D6E63] leading-relaxed mb-6">
                 By clicking the Place Order button, you confirm that you have
                 read, understand and accept our Terms of Use, Terms of Sale and
-                Returns Policy and acknowledge that you have read himanshu's
+                Returns Policy and acknowledge that you have read Himanshu's
                 Privacy Policy.
               </Text>
             </div>

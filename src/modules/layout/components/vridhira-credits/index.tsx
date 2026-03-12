@@ -1,11 +1,11 @@
 /**
  * ============================================================
- * himanshu — E-Commerce for Indian Artisans
+ * Himanshu — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
- * @repo        https://github.com/Newbie-Himanshu/himanshu-frontend
- * @copyright   2026 Himanshu — himanshu. All rights reserved.
+ * @repo        https://github.com/Newbie-Himanshu/Himanshu-frontend
+ * @copyright   2026 Himanshu — Himanshu. All rights reserved.
  * @license     MIT
  * ------------------------------------------------------------
  * @lastModifiedBy  Himanshu
@@ -44,14 +44,14 @@ const GitHubIcon = () => (
 
 /**
  * MAINTENANCE NOTE (for AI agents):
- * The social icon in the footer shows the himanshu brand org repo only.
+ * The social icon in the footer shows the Himanshu brand org repo only.
  * Himanshu's personal GitHub (Newbie-Himanshu) lives in code headers only — NOT here.
  * When Himanshu adds LinkedIn/Twitter/Instagram, add them to this array.
  */
 const FOOTER_LINKS: Array<{ label: string; href: string; Icon: React.FC }> = [
   {
-    label: "himanshu-frontend",
-    href: "https://github.com/himanshu/himanshu-frontend",
+    label: "Himanshu-frontend",
+    href: "https://github.com/Himanshu/Himanshu-frontend",
     Icon: GitHubIcon,
   },
   // ← Future: LinkedIn, Twitter/X, Instagram go here
@@ -62,7 +62,7 @@ const FOOTER_LINKS: Array<{ label: string; href: string; Icon: React.FC }> = [
 /**
  * himanshuCredits
  *
- * Renders visible author credits for Himanshu — himanshu in the storefront footer.
+ * Renders visible author credits for Himanshu — Himanshu in the storefront footer.
  * This is a Server Component — no client-side logic needed.
  *
  * Usage:
@@ -76,7 +76,7 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
   if (variant === "minimal") {
     return (
       <p
-        className={`text-xs text-himanshu-muted text-center ${className}`}
+        className={`text-xs text-Himanshu-muted text-center ${className}`}
         aria-label="Project credits"
       >
         Built with ❤️ by{" "}
@@ -84,9 +84,9 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
           href="https://github.com/Newbie-Himanshu"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-himanshu-primary transition-colors"
+          className="underline underline-offset-2 hover:text-Himanshu-primary transition-colors"
         >
-          Himanshu — himanshu
+          Himanshu — Himanshu
         </a>
         {" "}for Indian artisans.
       </p>
@@ -95,35 +95,35 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
 
   return (
     <section
-      className={`border-t border-himanshu-border pt-6 mt-6 ${className}`}
+      className={`border-t border-Himanshu-border pt-6 mt-6 ${className}`}
       aria-label="Project credits and attribution"
     >
       {/* Divider */}
       <div className="flex items-center gap-3 mb-4">
-        <div className="h-px flex-1 bg-himanshu-border" aria-hidden="true" />
-        <span className="text-xs text-himanshu-muted font-medium tracking-widest uppercase">
+        <div className="h-px flex-1 bg-Himanshu-border" aria-hidden="true" />
+        <span className="text-xs text-Himanshu-muted font-medium tracking-widest uppercase">
           Crafted by
         </span>
-        <div className="h-px flex-1 bg-himanshu-border" aria-hidden="true" />
+        <div className="h-px flex-1 bg-Himanshu-border" aria-hidden="true" />
       </div>
 
       {/* Main credits card */}
       <div className="flex flex-col items-center gap-3 text-center">
         {/* Name */}
-        <p className="text-sm font-semibold text-himanshu-text">
-          Himanshu — himanshu
+        <p className="text-sm font-semibold text-Himanshu-text">
+          Himanshu — Himanshu
         </p>
 
         {/* Tagline */}
-        <p className="text-xs text-himanshu-muted max-w-xs leading-relaxed">
-          Building himanshu independently — an open platform for India&apos;s artisans.
+        <p className="text-xs text-Himanshu-muted max-w-xs leading-relaxed">
+          Building Himanshu independently — an open platform for India&apos;s artisans.
         </p>
 
         {/* Social / repo links (brand org only — visible to website visitors) */}
         {FOOTER_LINKS.length > 0 && (
           <ul
             className="flex items-center gap-4 mt-1"
-            aria-label="himanshu project links"
+            aria-label="Himanshu project links"
           >
             {FOOTER_LINKS.map(({ label, href, Icon }) => (
               <li key={label}>
@@ -132,7 +132,7 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${label} on GitHub`}
-                  className="flex items-center gap-1.5 text-xs text-himanshu-muted hover:text-himanshu-primary transition-colors"
+                  className="flex items-center gap-1.5 text-xs text-Himanshu-muted hover:text-Himanshu-primary transition-colors"
                 >
                   <Icon />
                   <span>{label}</span>
@@ -143,18 +143,18 @@ const himanshuCredits: React.FC<himanshuCreditsProps> = ({
         )}
 
         {/* Copyright */}
-        <p className="text-xs text-himanshu-muted mt-1">
-          © {new Date().getFullYear()} Himanshu — himanshu. All rights reserved.
+        <p className="text-xs text-Himanshu-muted mt-1">
+          © {new Date().getFullYear()} Himanshu — Himanshu. All rights reserved.
         </p>
 
         {/* Framework acknowledgment */}
-        <p className="text-xs text-himanshu-muted">
+        <p className="text-xs text-Himanshu-muted">
           Built using{" "}
           <a
             href="https://github.com/medusajs/medusa"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-himanshu-primary transition-colors"
+            className="underline underline-offset-2 hover:text-Himanshu-primary transition-colors"
           >
             MedusaJS
           </a>{" "}

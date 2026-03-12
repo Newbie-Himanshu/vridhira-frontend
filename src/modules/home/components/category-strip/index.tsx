@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * himanshu — E-Commerce for Indian Artisans
+ * Himanshu — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu

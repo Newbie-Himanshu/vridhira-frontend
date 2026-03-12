@@ -1,17 +1,17 @@
 /**
  * ============================================================
- * himanshu — E-Commerce for Indian Artisans
+ * Himanshu — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
- * @repo        https://github.com/Newbie-Himanshu/himanshu-frontend
- * @copyright   2026 Himanshu — himanshu. All rights reserved.
+ * @repo        https://github.com/Newbie-Himanshu/Himanshu-frontend
+ * @copyright   2026 Himanshu — Himanshu. All rights reserved.
  * @license     MIT
  * ------------------------------------------------------------
  * @lastModifiedBy  Himanshu
  * @modifiedWith    GitHub Copilot
  * @modifiedOn      2026-03-06
- * @changeNote      Added himanshu Google font imports (Plus Jakarta Sans, Playfair Display, Tiro Devanagari Hindi)
+ * @changeNote      Added Himanshu Google font imports (Plus Jakarta Sans, Playfair Display, Tiro Devanagari Hindi)
  * ============================================================
  */
 
@@ -49,7 +49,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
-  title: "himanshu — E-Commerce for Indian Artisans",
+  title: "Himanshu — E-Commerce for Indian Artisans",
   description: "An open e-commerce platform built for India's artisans and handcraft sellers.",
   authors: [{ name: "Himanshu", url: "https://github.com/Newbie-Himanshu" }],
 }
