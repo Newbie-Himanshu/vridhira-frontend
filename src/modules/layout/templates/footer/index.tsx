@@ -16,7 +16,7 @@
  */
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import HimanshuCredits from "@modules/layout/components/himanshu-credits"
+import ProjectCredits from "@modules/layout/components/vridhira-credits"
 
 // ─── Social brand icons (inline SVG, server-safe) ────────────────────────────
 

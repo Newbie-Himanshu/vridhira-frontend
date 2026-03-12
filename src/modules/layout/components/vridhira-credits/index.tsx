@@ -11,7 +11,7 @@
  * @lastModifiedBy  Himanshu
  * @modifiedWith    GitHub Copilot
  * @modifiedOn      2026-03-06
- * @changeNote      Initial creation of HimanshuCredits component
+ * @changeNote      Initial creation of ProjectCredits component
  * ============================================================
  */
 
@@ -19,7 +19,7 @@ import React from "react"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type HimanshuCreditsProps = {
+type ProjectCreditsProps = {
   /** Controls visual weight. Use 'full' in footer, 'minimal' in tight spaces */
   variant?: "full" | "minimal"
   /** Optional custom class overrides for the wrapper */
@@ -60,16 +60,16 @@ const FOOTER_LINKS: Array<{ label: string; href: string; Icon: React.FC }> = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 /**
- * HimanshuCredits
+ * ProjectCredits
  *
  * Renders visible author credits for Himanshu in the storefront footer.
  * This is a Server Component — no client-side logic needed.
  *
  * Usage:
- *   <HimanshuCredits />                    ← full variant (default)
- *   <HimanshuCredits variant="minimal" />  ← one-liner for tight spaces
+ *   <ProjectCredits />                    ← full variant (default)
+ *   <ProjectCredits variant="minimal" />  ← one-liner for tight spaces
  */
-const HimanshuCredits: React.FC<HimanshuCreditsProps> = ({
+const ProjectCredits: React.FC<ProjectCreditsProps> = ({
   variant = "full",
   className = "",
 }) => {
@@ -165,4 +165,4 @@ const HimanshuCredits: React.FC<HimanshuCreditsProps> = ({
   )
 }
 
-export default HimanshuCredits
+export default ProjectCredits
