@@ -530,7 +530,7 @@ This project (architected + executed)
 
 ---
 
-### Why Himanshu?
+### Why This Storefront?
 
 India has **7 crore+ artisans** — weavers, potters, block printers, leatherworkers — with no good open-source storefront built for how India actually shops: UPI-first, COD-heavy, Hindi-ready, Shiprocket-wired. Every existing solution is either a paid SaaS, a generic Western template with INR bolted on, or enterprise software that a solo artisan can't run.
 
