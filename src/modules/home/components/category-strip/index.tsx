@@ -5,7 +5,7 @@
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
  * @copyright   2026 Himanshu. All rights reserved.
- * @license     SEE LICENSE IN LICENSE
+ * @license     Dual-License (Community/Commercial) v2.0 — SEE LICENSE
  * @modifiedWith    GitHub Copilot
  * @modifiedOn      2026-03-07
  * @changeNote      Replaced event-bus (cat-strip-glide-start/enter/abort) + React ready/entered
