@@ -1,28 +1,28 @@
 ﻿<!--
   ============================================================
-  VRIDHIRA — E-Commerce for Indian Artisans
+  himanshu — E-Commerce for Indian Artisans
   ============================================================
   Author:         Himanshu
   GitHub:         https://github.com/Newbie-Himanshu
-  Repo:           https://github.com/Newbie-Himanshu/vridhira-frontend
-  Copyright:      2026 Himanshu — Vridhira. All rights reserved.
-  License:        Vridhira Attribution License v2.0
+  Repo:           https://github.com/Newbie-Himanshu/himanshu-frontend
+  Copyright:      2026 Himanshu — himanshu. All rights reserved.
+  License:        himanshu Attribution License v2.0
   Last Modified:  Himanshu via GitHub Copilot on 2026-03-06
   Change:         Nav + links converted to badge images (no underlines); license updated
   ============================================================
 -->
 
 <p align="center">
-  <a href="https://github.com/vridhira/vridhira-frontend">
+  <a href="https://github.com/himanshu/himanshu-frontend">
     <img
-      src="https://img.shields.io/badge/%F0%9F%9B%95%20VRIDHIRA-Open%20Commerce%20for%20Indian%20Artisans-8B4513?style=for-the-badge&labelColor=2d1a0e&color=8B4513"
-      alt="Vridhira Banner"
+      src="https://img.shields.io/badge/%F0%9F%9B%95%20himanshu-Open%20Commerce%20for%20Indian%20Artisans-8B4513?style=for-the-badge&labelColor=2d1a0e&color=8B4513"
+      alt="himanshu Banner"
       height="48"
     />
   </a>
 </p>
 
-<h1 align="center">Vridhira — Storefront</h1>
+<h1 align="center">himanshu — Storefront</h1>
 
 <p align="center">
   India's open e-commerce platform for artisans and handcraft sellers<br />
@@ -38,14 +38,14 @@
   &nbsp;
   <a href="#-payments"><img src="https://img.shields.io/badge/-Payments-1976D2?style=flat-square" alt="Payments" /></a>
   &nbsp;
-  <a href="https://github.com/Newbie-Himanshu/vridhira-backend"><img src="https://img.shields.io/badge/-Backend_Repo-24292f?style=flat-square&logo=github&logoColor=white" alt="Backend Repo" /></a>
+  <a href="https://github.com/Newbie-Himanshu/himanshu-backend"><img src="https://img.shields.io/badge/-Backend_Repo-24292f?style=flat-square&logo=github&logoColor=white" alt="Backend Repo" /></a>
   &nbsp;
   <a href="#-contributing"><img src="https://img.shields.io/badge/-Contributing-2da44e?style=flat-square" alt="Contributing" /></a>
 </p>
 
 <p align="center">
   <a href="./LICENSE">
-    <img src="https://img.shields.io/badge/license-Vridhira_Attribution_v2.0-8B4513?style=flat-square" alt="Vridhira Attribution License v2.0" />
+    <img src="https://img.shields.io/badge/license-himanshu_Attribution_v2.0-8B4513?style=flat-square" alt="himanshu Attribution License v2.0" />
   </a>
   <img src="https://img.shields.io/badge/version-0.1.0-8B4513?style=flat-square" alt="v0.1.0" />
   <a href="https://nextjs.org">
@@ -60,7 +60,7 @@
   <a href="https://tailwindcss.com">
     <img src="https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
   </a>
-  <a href="https://github.com/Newbie-Himanshu/vridhira-frontend/pulls">
+  <a href="https://github.com/Newbie-Himanshu/himanshu-frontend/pulls">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" alt="PRs Welcome" />
   </a>
 </p>
@@ -84,8 +84,7 @@
 
 | # | Section | What's inside |
 |:---:|:---|:---|
-| 0 | [⚖️ Licensing](#%EF%B8%8F-licensing) | **Dual-License model — FREE for learning, PAID for commercial** |
-| 1 | [🛕 Overview](#-overview) | What Vridhira is and why it exists |
+| 1 | [🛕 Overview](#-overview) | What himanshu is and why it exists |
 | 2 | [✨ Features](#-features) | Full feature grid — commerce, payments, logistics, search |
 | 3 | [🇮🇳 India-First Commerce](#-india-first-commerce) | UPI, COD-OTP, INR/GST, Devanagari — built for India |
 | 4 | [🚀 Quickstart](#-quickstart) | Prerequisites → install → `.env` → running locally |
@@ -96,83 +95,27 @@
 | 9 | [🔗 Related Repositories](#-related-repositories) | Frontend & backend repos |
 | 10 | [📚 Resources](#-resources) | Official docs for every integration |
 | 11 | [🤝 Contributing](#-contributing) | How to fork, branch, commit, and PR |
-| 12 | [🙏 Acknowledgements](#-acknowledgements) | Open-source projects that power Vridhira |
-| 13 | [📜 License](#-license) | Vridhira Dual-License v2.0 — FREE for learning, PAID for commercial |
+| 12 | [🙏 Acknowledgements](#-acknowledgements) | Open-source projects that power himanshu |
+| 13 | [📜 License](#-license) | himanshu Attribution License v2.0 — use freely, **always credit** |
 | 14 | [👤 Author](#-author) | Built by Himanshu for India's artisans |
 
 </details>
 
 ---
 
-## ⚖️ Licensing
+## 🛕 Overview
 
-Vridhira uses a **DUAL-LICENSE model** to keep this project sustainable while remaining accessible to students and non-profits:
+**himanshu** is an **open-source**, **India-first** e-commerce storefront designed for artisans, weavers, potters, and handcraft sellers — people whose work deserves a digital home built for **how India actually shops**.
 
-### 👨‍🎓 **Community License (FREE)**
-For students, learners, and non-profit organizations
-
-✅ **No payment required** | ✅ **Full source access** | ✅ **Attribution only**
-
-Perfect for portfolios, coursework, open-source contributions, and non-profit use.
-
-**[👉 Read Community License](./COMMUNITY-LICENSE.md)**
-
----
-
-### 💼 **Commercial License (PAID)**
-For businesses and revenue-generating deployments
-
-✅ **5-10% monthly royalty** (tiered by revenue) | ✅ **Monthly reporting** | ✅ **Production rights**
-
-If you deploy Vridhira to generate revenue (any amount), a Commercial License is required.
-
-**[👉 Read Commercial License](./COMMERCIAL-LICENSE.md) | [👉 Sign Agreement](./COMMERCIAL-LICENSE-AGREEMENT.md) | [👉 Payment Schedule](./PAYMENT-SCHEDULE.md)**
-
----
-
-### 📚 **Quick License Guide**
-
-| You Are... | License | Cost | Details |
-|---|---|---|---|
-| Student/learner | Community | FREE | [Read](./COMMUNITY-LICENSE.md) |
-| Building for portfolio | Community | FREE | [Read](./COMMUNITY-LICENSE.md) |
-| Contributing to open-source | Community | FREE | [Read](./COMMUNITY-LICENSE.md) |
-| Running a business | Commercial | 5-10% monthly | [Read](./COMMERCIAL-LICENSE.md) |
-| Building for a paying client | Commercial | 5-10% monthly | [Read](./COMMERCIAL-LICENSE.md) |
-| Non-profit organization | Community | FREE | [Read](./COMMUNITY-LICENSE.md) |
-
-**Unsure which one you need?** → [👉 See Full Licensing Guide](./LICENSE-INDEX.md)
-
----
-
-## 🚀 Quick Start for Licensing
-
-**Community License (No setup):**
-1. Build your project
-2. Keep attribution in README and code
-3. Deploy for non-commercial use
-4. Done! ✅
-
-**Commercial License (Setup required):**
-1. Read [COMMERCIAL-LICENSE.md](./COMMERCIAL-LICENSE.md)
-2. Email himanshu@example.com with company details
-3. Sign [COMMERCIAL-LICENSE-AGREEMENT.md](./COMMERCIAL-LICENSE-AGREEMENT.md)
-4. Setup monthly payment by 15th (use [PAYMENT-SCHEDULE.md](./PAYMENT-SCHEDULE.md))
-5. Deploy and scale! 🚀
-
----
-
-**Vridhira** is an **open-source**, **India-first** e-commerce storefront designed for artisans, weavers, potters, and handcraft sellers — people whose work deserves a digital home built for **how India actually shops**.
-
-This is the **customer-facing storefront**. It connects to the **Vridhira Backend** — a **MedusaJS v2** server with custom Indian commerce modules — to deliver shopping experiences optimised for Indian buyers: **UPI**, **COD with OTP**, **GST-inclusive pricing**, **Hindi-ready typography**, and **Shiprocket logistics**.
+This is the **customer-facing storefront**. It connects to the **himanshu Backend** — a **MedusaJS v2** server with custom Indian commerce modules — to deliver shopping experiences optimised for Indian buyers: **UPI**, **COD with OTP**, **GST-inclusive pricing**, **Hindi-ready typography**, and **Shiprocket logistics**.
 
 > _Think of it as Shopify's Indian artisan cousin — **open source**, **self-hosted**, and built on **Indian payment rails** from day one._
 
 > [!IMPORTANT]
-> This repository is the **storefront only**. You also need the Vridhira Backend running to serve data. Both repos must be set up together for a working store. See [Related Repositories](#-related-repositories).
+> This repository is the **storefront only**. You also need the himanshu Backend running to serve data. Both repos must be set up together for a working store. See [Related Repositories](#-related-repositories).
 
 > [!NOTE]
-> Vridhira is an **actively developed** project. Some features — Algolia search, Wishlist, and Google OAuth — are fully built in the backend but the storefront UI for these is still being migrated. The project is **not yet production-ready**. Track progress in the [GitHub issues](https://github.com/Newbie-Himanshu/vridhira-frontend/issues).
+> himanshu is an **actively developed** project. Some features — Algolia search, Wishlist, and Google OAuth — are fully built in the backend but the storefront UI for these is still being migrated. The project is **not yet production-ready**. Track progress in the [GitHub issues](https://github.com/Newbie-Himanshu/himanshu-frontend/issues).
 
 ---
 
@@ -219,7 +162,7 @@ This is the **customer-facing storefront**. It connects to the **Vridhira Backen
 
 ## 🇮🇳 India-First Commerce
 
-Vridhira is **not** a generic global storefront with INR added as an afterthought. Every layer is built for the way India shops, sells, and ships.
+himanshu is **not** a generic global storefront with INR added as an afterthought. Every layer is built for the way India shops, sells, and ships.
 
 | Feature | Details |
 |:---|:---|
@@ -250,7 +193,7 @@ Vridhira is **not** a generic global storefront with INR added as an afterthough
 |:---|:---|:---|
 | **Node.js** | >= 20 | Use [nvm](https://github.com/nvm-sh/nvm) to manage versions |
 | **Yarn** | >= 1.22 | `npm install -g yarn` |
-| **Vridhira Backend** | Running at `:9000` | See [Related Repositories](#-related-repositories) |
+| **himanshu Backend** | Running at `:9000` | See [Related Repositories](#-related-repositories) |
 
 > [!NOTE]
 > A `.env.template` file is already included in the repo with all variable names and placeholder descriptions. Copy it to `.env.local` — never rename or edit `.env.template` itself, it's committed to the repo as a reference for contributors.
@@ -263,8 +206,8 @@ Vridhira is **not** a generic global storefront with INR added as an afterthough
 **1 · Clone the repo**
 
 ```bash
-git clone https://github.com/Newbie-Himanshu/vridhira-frontend.git
-cd vridhira-frontend
+git clone https://github.com/Newbie-Himanshu/himanshu-frontend.git
+cd himanshu-frontend
 ```
 
 **2 · Install dependencies**
@@ -298,7 +241,7 @@ Your storefront is live at `http://localhost:8000`.
 
 ## 💳 Payments
 
-Vridhira ships with **two payment providers**, pre-configured for Indian consumers out of the box.
+himanshu ships with **two payment providers**, pre-configured for Indian consumers out of the box.
 
 | Provider | Methods Supported | Best For |
 |:---|:---|:---|
@@ -348,11 +291,11 @@ Copy `.env.template` to `.env.local` and fill in your values:
 
 ## 🗂️ Tech Stack
 
-| Layer | Technology | Why Vridhira chose it |
+| Layer | Technology | Why himanshu chose it |
 |:---|:---|:---|
 | Framework | <a href="https://nextjs.org"><img src="https://img.shields.io/badge/Next.js-15-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js 15" /></a> | **App Router** + RSC + ISR — fast by default, SEO-friendly |
 | Language | <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" /></a> | **Type safety** across the full stack — catches bugs at compile time |
-| Styling | <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a> | Utility-first with **Vridhira's earthy design tokens** (saffron, teak, wheat) |
+| Styling | <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a> | Utility-first with **himanshu's earthy design tokens** (saffron, teak, wheat) |
 | Commerce Engine | <a href="https://medusajs.com"><img src="https://img.shields.io/badge/MedusaJS-v2-7c3aed?style=flat-square" alt="MedusaJS v2" /></a> | **Headless, modular, open-licensed** — full control, no vendor lock-in |
 | Payments | <a href="https://razorpay.com"><img src="https://img.shields.io/badge/Razorpay-payments-2196F3?style=flat-square" alt="Razorpay" /></a> | India's **most complete** payment gateway — UPI + COD + EMI in one SDK |
 | Logistics | <a href="https://shiprocket.in"><img src="https://img.shields.io/badge/Shiprocket-logistics-FF6B00?style=flat-square" alt="Shiprocket" /></a> | India's **leading D2C** fulfillment & real-time tracking network |
@@ -363,17 +306,17 @@ Copy `.env.template` to `.env.local` and fill in your values:
 > This project uses **Yarn exclusively** — do not run `npm install`. Using npm will generate a `package-lock.json` alongside `yarn.lock`, creating dependency version conflicts. If you accidentally ran npm, delete `node_modules/`, delete `package-lock.json`, and run `yarn` to restore a clean install.
 
 > [!IMPORTANT]
-> The `v0-boty-e-commerce-template/` folder in this monorepo is a **read-only visual reference** — it uses `shadcn/ui` which is **not** installed in the Vridhira storefront. When adapting components from it, re-implement the UI using Tailwind and existing module patterns. Never copy-paste its code directly.
+> The `v0-boty-e-commerce-template/` folder in this monorepo is a **read-only visual reference** — it uses `shadcn/ui` which is **not** installed in the himanshu storefront. When adapting components from it, re-implement the UI using Tailwind and existing module patterns. Never copy-paste its code directly.
 
 > [!TIP]
-> **MedusaJS v2** ships with a modular architecture — you can swap or extend individual modules (payments, inventory, fulfillment) without touching others. Vridhira uses this to plug in Razorpay and Shiprocket as first-class modules.
+> **MedusaJS v2** ships with a modular architecture — you can swap or extend individual modules (payments, inventory, fulfillment) without touching others. himanshu uses this to plug in Razorpay and Shiprocket as first-class modules.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-vridhira-frontend/
+himanshu-frontend/
 ├── src/
 │   ├── app/
 │   │   └── [countryCode]/              ← i18n-aware routing root (e.g. /in/…)
@@ -391,10 +334,10 @@ vridhira-frontend/
 │   │   ├── account/                    ← Login, register, order history
 │   │   ├── home/                       ← Hero, featured collections
 │   │   └── layout/
-│   │       ├── templates/footer/       ← Footer with VridhiraCredits component
+│   │       ├── templates/footer/       ← Footer with himanshuCredits component
 │   │       ├── templates/nav/          ← Top navigation bar
 │   │       └── components/
-│   │           └── vridhira-credits/   ← Brand attribution + GitHub link
+│   │           └── himanshu-credits/   ← Brand attribution + GitHub link
 │   ├── lib/
 │   │   ├── data/                       ← Server actions & Medusa JS SDK calls
 │   │   └── util/                       ← Price formatters, helpers, constants
@@ -418,11 +361,11 @@ vridhira-frontend/
 
 | Repository | Description | Visibility |
 |:---|:---|:---:|
-| <a href="https://github.com/vridhira/vridhira-frontend"><img src="https://img.shields.io/badge/vridhira--frontend-storefront-8B4513?style=flat-square&logo=github&logoColor=white" alt="vridhira-frontend" /></a> | **This repo** — public-facing brand org storefront | 🌐 Public |
-| <a href="https://github.com/Newbie-Himanshu/vridhira-backend"><img src="https://img.shields.io/badge/vridhira--backend-backend-24292f?style=flat-square&logo=github&logoColor=white" alt="vridhira-backend" /></a> | MedusaJS v2 backend — **COD**, **Razorpay queue**, **Shiprocket**, **Wishlist**, **Algolia** modules | 🔒 Private |
+| <a href="https://github.com/himanshu/himanshu-frontend"><img src="https://img.shields.io/badge/himanshu--frontend-storefront-8B4513?style=flat-square&logo=github&logoColor=white" alt="himanshu-frontend" /></a> | **This repo** — public-facing brand org storefront | 🌐 Public |
+| <a href="https://github.com/Newbie-Himanshu/himanshu-backend"><img src="https://img.shields.io/badge/himanshu--backend-backend-24292f?style=flat-square&logo=github&logoColor=white" alt="himanshu-backend" /></a> | MedusaJS v2 backend — **COD**, **Razorpay queue**, **Shiprocket**, **Wishlist**, **Algolia** modules | 🔒 Private |
 
 > [!NOTE]
-> The storefront and backend are **decoupled via REST API**. You can run the storefront against any MedusaJS v2 backend — not just Vridhira's. This makes it easy to prototype with a vanilla Medusa instance before wiring up the custom modules.
+> The storefront and backend are **decoupled via REST API**. You can run the storefront against any MedusaJS v2 backend — not just himanshu's. This makes it easy to prototype with a vanilla Medusa instance before wiring up the custom modules.
 
 > [!TIP]
 > When setting up both repos for the first time: (1) start the backend with `yarn dev` and wait for the `Server is ready` log, (2) run `yarn seed` in the backend to populate test products and regions, (3) **only then** start the storefront. The storefront expects the `in` (India) region to already exist — seeding creates it.
@@ -433,7 +376,7 @@ vridhira-frontend/
 
 **Core Frameworks**
 
-- <a href="https://docs.medusajs.com"><img src="https://img.shields.io/badge/MedusaJS-Documentation-7c3aed?style=flat-square" alt="MedusaJS Documentation" /></a> — The **commerce engine** powering Vridhira's backend
+- <a href="https://docs.medusajs.com"><img src="https://img.shields.io/badge/MedusaJS-Documentation-7c3aed?style=flat-square" alt="MedusaJS Documentation" /></a> — The **commerce engine** powering himanshu's backend
 - <a href="https://nextjs.org/docs"><img src="https://img.shields.io/badge/Next.js-Documentation-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js Documentation" /></a> — **App Router**, RSC, SSR, and ISR guides
 - <a href="https://tailwindcss.com/docs"><img src="https://img.shields.io/badge/Tailwind_CSS-Documentation-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS Documentation" /></a> — Utility classes and theme customisation
 
@@ -444,7 +387,7 @@ vridhira-frontend/
 - <a href="https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react"><img src="https://img.shields.io/badge/Algolia-InstantSearch_Docs-003DFF?style=flat-square&logo=algolia&logoColor=white" alt="Algolia InstantSearch Docs" /></a> — Connecting Algolia to your React/Next.js UI
 
 > [!TIP]
-> Medusa provides a **Storefront Development Guide** at `docs.medusajs.com/storefront-development` that explains exactly which API endpoints Vridhira's `src/lib/data/` calls map to. Read it if you're extending or debugging data-fetching logic.
+> Medusa provides a **Storefront Development Guide** at `docs.medusajs.com/storefront-development` that explains exactly which API endpoints himanshu's `src/lib/data/` calls map to. Read it if you're extending or debugging data-fetching logic.
 
 > [!WARNING]
 > **MedusaJS v2 is not backward-compatible with v1.** Most tutorials, YouTube videos, blog posts, and Stack Overflow answers you find online are for v1. Their code will not work — the module system, API routes, and SDK are completely different. Always check the URL contains `/v2/` or the version header says `2.x` before following any guide.
@@ -457,7 +400,7 @@ Contributions are welcome — from fixing a typo in the README to building new f
 
 **Steps to contribute**
 
-1. <a href="https://github.com/Newbie-Himanshu/vridhira-frontend/fork"><img src="https://img.shields.io/badge/Fork-this_repo-8B4513?style=flat-square&logo=github&logoColor=white" alt="Fork" /></a> the repository
+1. <a href="https://github.com/Newbie-Himanshu/himanshu-frontend/fork"><img src="https://img.shields.io/badge/Fork-this_repo-8B4513?style=flat-square&logo=github&logoColor=white" alt="Fork" /></a> the repository
 2. **Create a branch** — use a descriptive name: `feat/product-reviews` or `fix/cart-quantity-bug`
 3. **Make focused changes** — one concern per PR keeps reviews fast
 4. **Commit** using [Conventional Commits](https://www.conventionalcommits.org):
@@ -477,7 +420,7 @@ yarn lint           # ESLint — no warnings on changed files
 > **Small PRs merge faster.** If your change touches more than 3 files or 150 lines, consider splitting it. Reviewers are human — focused diffs get reviewed same-day.
 
 > [!NOTE]
-> Vridhira uses **Conventional Commits** — your PR title and commit messages must follow the pattern. PRs with messages like `update stuff` or `fix` will be asked to rebase with proper messages before merging.
+> himanshu uses **Conventional Commits** — your PR title and commit messages must follow the pattern. PRs with messages like `update stuff` or `fix` will be asked to rebase with proper messages before merging.
 
 > [!IMPORTANT]
 > **Do not commit `.env.local`**, API keys, secrets, or any credentials. If you accidentally commit a secret, rotate it immediately — don't just delete the file in a follow-up commit (the secret is still in git history).
@@ -486,9 +429,9 @@ yarn lint           # ESLint — no warnings on changed files
 
 ## 🙏 Acknowledgements
 
-Vridhira is built on the shoulders of these excellent open-source projects:
+himanshu is built on the shoulders of these excellent open-source projects:
 
-| Project | Role in Vridhira | License |
+| Project | Role in himanshu | License |
 |:---|:---|:---:|
 | <a href="https://github.com/medusajs/medusa"><img src="https://img.shields.io/badge/MedusaJS-github-7c3aed?style=flat-square&logo=github&logoColor=white" alt="MedusaJS" /></a> | **Commerce engine** — orders, products, regions, payments | MIT |
 | <a href="https://github.com/vercel/next.js"><img src="https://img.shields.io/badge/Next.js-github-000000?style=flat-square&logo=github&logoColor=white" alt="Next.js" /></a> | **React framework** — App Router, SSR, image optimisation | MIT |
@@ -497,18 +440,18 @@ Vridhira is built on the shoulders of these excellent open-source projects:
 | <a href="https://shiprocket.in"><img src="https://img.shields.io/badge/Shiprocket-website-FF6B00?style=flat-square" alt="Shiprocket" /></a> | **Logistics infrastructure** — D2C fulfillment & tracking | Commercial |
 
 > [!NOTE]
-> The Vridhira **custom backend modules** (COD payment, Razorpay queue, Shiprocket fulfillment, Wishlist, Algolia indexing) are original work by Himanshu and are **not part of MedusaJS**. They are covered by the Vridhira Attribution License v2.0 — not by MedusaJS's MIT license. MedusaJS's MIT license applies only to the MedusaJS framework core.
+> The himanshu **custom backend modules** (COD payment, Razorpay queue, Shiprocket fulfillment, Wishlist, Algolia indexing) are original work by Himanshu and are **not part of MedusaJS**. They are covered by the himanshu Attribution License v2.0 — not by MedusaJS's MIT license. MedusaJS's MIT license applies only to the MedusaJS framework core.
 
 ---
 
 ## 📜 License
 
-Distributed under the **Vridhira Attribution License v2.0** — see [LICENSE](./LICENSE) for full text.
+Distributed under the **himanshu Attribution License v2.0** — see [LICENSE](./LICENSE) for full text.
 
-Copyright © 2026 **Himanshu — Vridhira**. All rights reserved.
+Copyright © 2026 **Himanshu — himanshu**. All rights reserved.
 
 > [!NOTE]
-> You are **free to fork, self-host, modify, and use commercially** — but you **must** publicly credit Vridhira and Himanshu in your README and keep the storefront credits visible. Removing attribution is a license violation. See [LICENSE](./LICENSE) for exact conditions.
+> You are **free to fork, self-host, modify, and use commercially** — but you **must** publicly credit himanshu and Himanshu in your README and keep the storefront credits visible. Removing attribution is a license violation. See [LICENSE](./LICENSE) for exact conditions.
 
 > [!IMPORTANT]
 > **v2.0 introduces a one-time cure rule.** If you violate the license and cure within 7 days, rights are reinstated — but **only once per licensee**. A second violation is permanent termination with no reinstatement path.
@@ -520,54 +463,85 @@ Copyright © 2026 **Himanshu — Vridhira**. All rights reserved.
 
 ## 👤 Author
 
-<table>
-  <tr>
-    <td valign="top" width="120">
-      <a href="https://github.com/Newbie-Himanshu">
-        <img
-          src="https://github.com/Newbie-Himanshu.png"
-          width="96"
-          style="border-radius:50%"
-          alt="Himanshu"
-        />
-      </a>
-    </td>
-    <td valign="top">
-      <h3>Himanshu</h3>
-      <p>
-        Independent developer building open commerce infrastructure for India's artisans and handcraft sellers.<br/>
-        Vridhira is a solo project — no team, no VC backing, no SaaS subscriptions. Just code, craft, and conviction.
-      </p>
-      <p>
-        <a href="https://github.com/Newbie-Himanshu">
-          <img src="https://img.shields.io/badge/GitHub-Newbie--Himanshu-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
-        </a>
-        &nbsp;
-        <a href="https://github.com/Newbie-Himanshu/vridhira-frontend">
-          <img src="https://img.shields.io/badge/Repo-vridhira--frontend-8B4513?style=flat-square&logo=github&logoColor=white" alt="Frontend Repo" />
-        </a>
-        &nbsp;
-        <a href="https://github.com/Newbie-Himanshu/vridhira-backend">
-          <img src="https://img.shields.io/badge/Repo-vridhira--backend-24292f?style=flat-square&logo=github&logoColor=white" alt="Backend Repo" />
-        </a>
-        &nbsp;
-        <a href="https://github.com/vridhira">
-          <img src="https://img.shields.io/badge/Org-vridhira-8B4513?style=flat-square&logo=github&logoColor=white" alt="Org: vridhira" />
-        </a>
-      </p>
-    </td>
-  </tr>
-</table>
+<br/>
 
-| | |
-|---|---|
-| **What I build** | Full-stack e-commerce — payments, logistics, search, storefront |
-| **Stack** | Next.js · MedusaJS · TypeScript · Razorpay · Shiprocket · Algolia |
-| **Why Vridhira** | India has 7 crore+ artisans with no good open-source digital storefront built for how India shops |
-| **License** | **[Dual-License v2.0](./LICENSE)** — [📚 Licensing Guide](./LICENSE-INDEX.md) · [👨‍🎓 Community](./COMMUNITY-LICENSE.md) · [💼 Commercial](./COMMERCIAL-LICENSE.md) · [💳 Payment](./PAYMENT-SCHEDULE.md) |
+<p align="center">
+  <a href="https://github.com/Newbie-Himanshu">
+    <img
+      src="https://github.com/Newbie-Himanshu.png"
+      width="110"
+      alt="Himanshu"
+    />
+  </a>
+</p>
+
+<h3 align="center">Himanshu</h3>
+
+<p align="center">
+  <strong>Vibecoder · AI-native builder · India-first indie dev</strong><br/>
+  <em>I don't just write code — I orchestrate AI agents to build production software.</em>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Newbie-Himanshu">
+    <img src="https://img.shields.io/badge/GitHub-Newbie--Himanshu-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/Newbie-Himanshu/himanshu-frontend">
+    <img src="https://img.shields.io/badge/Frontend-himanshu--frontend-8B4513?style=flat-square&logo=github&logoColor=white" alt="Frontend Repo" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/Newbie-Himanshu/himanshu-backend">
+    <img src="https://img.shields.io/badge/Backend-himanshu--backend-24292f?style=flat-square&logo=github&logoColor=white" alt="Backend Repo" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/himanshu">
+    <img src="https://img.shields.io/badge/Org-himanshu-8B4513?style=flat-square&logo=github&logoColor=white" alt="Org: himanshu" />
+  </a>
+</p>
+
+---
+
+### What is a vibecoder?
+
+A vibecoder is someone who ships real, production-quality software **by directing AI agents** — using tools like GitHub Copilot and Antigravity as the execution layer while owning the architecture, decisions, and creative direction entirely.
+
+This is **not** "AI wrote my code." This is a new way of building:
+
+| ❌ &nbsp; Old way | ✅ &nbsp; Vibecoder way |
+|:---:|:---:|
+| Write every line manually | Define the system, direct the agents, review the output |
+| Bottlenecked by typing speed | Bottlenecked only by thinking speed |
+| One dev = one feature at a time | One dev = multiple modules in parallel |
+| AI as autocomplete | AI as a junior engineer you manage |
+
+himanshu — the entire frontend + backend — is built this way. Every module, every payment integration, every security decision was **directed by Himanshu and executed with AI agents**.
+
+---
+
+### How this project was built
+
+```
+Himanshu (architect + director)
+    │
+    ├── GitHub Copilot     → component migration, TypeScript, README
+    ├── Antigravity        → backend modules, API wiring, security audit
+    └── Manual review      → every decision, every architectural choice
+```
+
+> [!IMPORTANT]
+> **AI agents wrote the code. Himanshu owns it.** Every integration, every license clause, every design decision was specified, reviewed, and approved by Himanshu. The agents are the hands — the vision is entirely human.
+
+---
+
+### Why himanshu?
+
+India has **7 crore+ artisans** — weavers, potters, block printers, leatherworkers — with no good open-source storefront built for how India actually shops: UPI-first, COD-heavy, Hindi-ready, Shiprocket-wired. Every existing solution is either a paid SaaS, a generic Western template with INR bolted on, or enterprise software that a solo artisan can't run.
+
+himanshu is built to fix that. One dev, AI-augmented, shipping fast.
 
 > [!NOTE]
-> If you find this project useful — **star the repo**, share it with someone building for India, or open a PR. That's the best way to support independent open-source work.
+> If you find this project useful — **star the repo**, share it with someone building for India, or open a PR. That's the best way to support independent AI-native open-source work.
 
 ---
 
