@@ -77,7 +77,7 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
 
       {/* ── Breadcrumb strip ─────────────────────────────────────────────── */}
       <div
-        className="border-b border-vridhira-border/40 bg-white/60 backdrop-blur-sm"
+        className="border-b border-himanshu-border/40 bg-white/60 backdrop-blur-sm"
         style={{ paddingTop: 88 }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-2.5">
@@ -86,7 +86,7 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
             {/* Home */}
             <Link
               href="/"
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-vridhira-muted hover:text-vridhira-accent hover:bg-vridhira-surface transition-all"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-himanshu-muted hover:text-himanshu-accent hover:bg-himanshu-surface transition-all"
             >
               <svg className="w-3.5 h-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
@@ -94,30 +94,30 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
               Home
             </Link>
 
-            <svg className="w-3 h-3 text-vridhira-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+            <svg className="w-3 h-3 text-himanshu-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
 
             {/* Help Center */}
             <Link
               href="/help-center"
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-vridhira-muted hover:text-vridhira-accent hover:bg-vridhira-surface transition-all"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-himanshu-muted hover:text-himanshu-accent hover:bg-himanshu-surface transition-all"
             >
               Help Center
             </Link>
 
-            <svg className="w-3 h-3 text-vridhira-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+            <svg className="w-3 h-3 text-himanshu-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
 
             {/* Section */}
             <Link
               href={`/help-center?section=${article.section}`}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-vridhira-muted hover:text-vridhira-accent hover:bg-vridhira-surface transition-all capitalize"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-himanshu-muted hover:text-himanshu-accent hover:bg-himanshu-surface transition-all capitalize"
             >
               {sectionLabel}
             </Link>
 
-            <svg className="w-3 h-3 text-vridhira-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+            <svg className="w-3 h-3 text-himanshu-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
 
             {/* Article title — active pill */}
-            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-vridhira-accent bg-vridhira-accent/8 border border-vridhira-accent/20 truncate max-w-[200px] sm:max-w-xs">
+            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-himanshu-accent bg-himanshu-accent/8 border border-himanshu-accent/20 truncate max-w-[200px] sm:max-w-xs">
               {article.title}
             </span>
 
@@ -136,7 +136,7 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
               {/* Back link */}
               <Link
                 href={`/help-center?section=${article.section}`}
-                className="inline-flex items-center gap-2 font-dm text-[13px] text-vridhira-muted hover:text-vridhira-accent transition-colors font-medium"
+                className="inline-flex items-center gap-2 font-dm text-[13px] text-himanshu-muted hover:text-himanshu-accent transition-colors font-medium"
               >
                 <ArrowLeftIcon />
                 Back to {sectionLabel}
@@ -144,7 +144,7 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
 
               {/* Articles in same section */}
               <div>
-                <h3 className="font-dm text-[11px] font-bold tracking-[0.1em] uppercase text-vridhira-muted/70 mb-3 px-1">
+                <h3 className="font-dm text-[11px] font-bold tracking-[0.1em] uppercase text-himanshu-muted/70 mb-3 px-1">
                   {sectionLabel}
                 </h3>
                 <nav className="space-y-1" aria-label="Articles in this section">
@@ -154,8 +154,8 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
                       href={`/help-center/${a.id}`}
                       className={`flex items-center gap-2 px-3 py-2 rounded-lg font-dm text-[13px] transition-all ${
                         a.id === article.id
-                          ? "bg-vridhira-surface text-vridhira-accent font-medium"
-                          : "text-vridhira-muted hover:bg-vridhira-surface hover:text-vridhira-accent"
+                          ? "bg-himanshu-surface text-himanshu-accent font-medium"
+                          : "text-himanshu-muted hover:bg-himanshu-surface hover:text-himanshu-accent"
                       }`}
                       aria-current={a.id === article.id ? "page" : undefined}
                     >
@@ -167,16 +167,16 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
               </div>
 
               {/* Contact card */}
-              <div className="p-5 bg-white rounded-2xl border border-vridhira-border/50 shadow-sm">
-                <h4 className="font-serif font-semibold text-base mb-1 text-vridhira-text">
+              <div className="p-5 bg-white rounded-2xl border border-himanshu-border/50 shadow-sm">
+                <h4 className="font-serif font-semibold text-base mb-1 text-himanshu-text">
                   Still need help?
                 </h4>
-                <p className="font-dm text-xs text-vridhira-muted mb-3 leading-relaxed">
+                <p className="font-dm text-xs text-himanshu-muted mb-3 leading-relaxed">
                   Our support team is here for your specific inquiries.
                 </p>
                 <Link
                   href="/account"
-                  className="block text-center w-full py-2 px-3 bg-transparent border border-vridhira-text/20 text-vridhira-text hover:border-vridhira-accent hover:text-vridhira-accent rounded-lg text-sm font-medium transition-all"
+                  className="block text-center w-full py-2 px-3 bg-transparent border border-himanshu-text/20 text-himanshu-text hover:border-himanshu-accent hover:text-himanshu-accent rounded-lg text-sm font-medium transition-all"
                 >
                   Contact Support
                 </Link>
@@ -188,14 +188,14 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
           <main className="flex-1 order-1 lg:order-2 min-w-0 max-w-3xl">
 
             {/* Article header */}
-            <div className="mb-10 pb-8 border-b border-vridhira-border/40">
-              <span className="inline-block font-dm text-[10px] font-bold uppercase tracking-[0.15em] text-vridhira-accent bg-vridhira-accent/5 border border-vridhira-accent/20 px-3 py-1 rounded-full mb-5">
+            <div className="mb-10 pb-8 border-b border-himanshu-border/40">
+              <span className="inline-block font-dm text-[10px] font-bold uppercase tracking-[0.15em] text-himanshu-accent bg-himanshu-accent/5 border border-himanshu-accent/20 px-3 py-1 rounded-full mb-5">
                 {sectionLabel}
               </span>
-              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-vridhira-text leading-[1.15] tracking-tight">
+              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-himanshu-text leading-[1.15] tracking-tight">
                 {article.title}
               </h1>
-              <p className="font-dm mt-4 text-base text-vridhira-muted leading-relaxed">
+              <p className="font-dm mt-4 text-base text-himanshu-muted leading-relaxed">
                 {article.description}
               </p>
             </div>
@@ -205,21 +205,21 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
               {article.steps.map((step, i) => (
                 <div key={i} className="flex gap-5">
                   {/* Step number badge */}
-                  <div className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-vridhira-accent bg-vridhira-accent/10 border border-vridhira-accent/20 mt-0.5">
+                  <div className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-himanshu-accent bg-himanshu-accent/10 border border-himanshu-accent/20 mt-0.5">
                     {i + 1}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h2 className="font-dm text-[17px] font-semibold text-vridhira-text mb-2">
+                    <h2 className="font-dm text-[17px] font-semibold text-himanshu-text mb-2">
                       {step.heading}
                     </h2>
-                    <p className="font-dm text-[15px] text-vridhira-muted leading-relaxed">
+                    <p className="font-dm text-[15px] text-himanshu-muted leading-relaxed">
                       {step.body}
                     </p>
                     {/* Inline link */}
                     {step.link && (
                       <Link
                         href={step.link.href}
-                        className="inline-flex items-center gap-1 mt-3 text-sm font-medium text-vridhira-accent hover:underline transition-colors"
+                        className="inline-flex items-center gap-1 mt-3 text-sm font-medium text-himanshu-accent hover:underline transition-colors"
                       >
                         {step.link.label}
                       </Link>
@@ -228,7 +228,7 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
                     {step.button && (
                       <Link
                         href={step.button.href}
-                        className="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-lg bg-vridhira-accent/10 border border-vridhira-accent/25 text-sm font-semibold text-vridhira-accent hover:bg-vridhira-accent hover:text-white transition-all"
+                        className="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-lg bg-himanshu-accent/10 border border-himanshu-accent/25 text-sm font-semibold text-himanshu-accent hover:bg-himanshu-accent hover:text-white transition-all"
                       >
                         {step.button.label}
                         <svg className="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -264,12 +264,12 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
               {prev && (
                 <Link
                   href={`/help-center/${prev.id}`}
-                  className="flex-1 flex items-center gap-3 p-4 bg-white rounded-xl border border-vridhira-border/40 hover:border-vridhira-accent/30 hover:shadow-md transition-all group"
+                  className="flex-1 flex items-center gap-3 p-4 bg-white rounded-xl border border-himanshu-border/40 hover:border-himanshu-accent/30 hover:shadow-md transition-all group"
                 >
                   <ArrowLeftIcon />
                   <div className="min-w-0">
-                    <div className="font-dm text-[10px] font-bold uppercase tracking-wide text-vridhira-muted/60 mb-0.5">Previous</div>
-                    <div className="font-dm text-[13px] font-medium text-vridhira-text group-hover:text-vridhira-accent truncate transition-colors">
+                    <div className="font-dm text-[10px] font-bold uppercase tracking-wide text-himanshu-muted/60 mb-0.5">Previous</div>
+                    <div className="font-dm text-[13px] font-medium text-himanshu-text group-hover:text-himanshu-accent truncate transition-colors">
                       {prev.title}
                     </div>
                   </div>
@@ -278,11 +278,11 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
               {next && (
                 <Link
                   href={`/help-center/${next.id}`}
-                  className="flex-1 flex items-center justify-end gap-3 p-4 bg-white rounded-xl border border-vridhira-border/40 hover:border-vridhira-accent/30 hover:shadow-md transition-all group text-right"
+                  className="flex-1 flex items-center justify-end gap-3 p-4 bg-white rounded-xl border border-himanshu-border/40 hover:border-himanshu-accent/30 hover:shadow-md transition-all group text-right"
                 >
                   <div className="min-w-0">
-                    <div className="font-dm text-[10px] font-bold uppercase tracking-wide text-vridhira-muted/60 mb-0.5">Next</div>
-                    <div className="font-dm text-[13px] font-medium text-vridhira-text group-hover:text-vridhira-accent truncate transition-colors">
+                    <div className="font-dm text-[10px] font-bold uppercase tracking-wide text-himanshu-muted/60 mb-0.5">Next</div>
+                    <div className="font-dm text-[13px] font-medium text-himanshu-text group-hover:text-himanshu-accent truncate transition-colors">
                       {next.title}
                     </div>
                   </div>
@@ -294,7 +294,7 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
             {/* Related articles */}
             {related.length > 0 && (
               <div>
-                <h3 className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-vridhira-muted/70 mb-4">
+                <h3 className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-himanshu-muted/70 mb-4">
                   Related articles
                 </h3>
                 <div className="space-y-2">
@@ -302,16 +302,16 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
                     <Link
                       key={rel.id}
                       href={`/help-center/${rel.id}`}
-                      className="group flex items-center gap-4 p-4 bg-white rounded-xl border border-vridhira-border/40 hover:border-vridhira-accent/30 hover:shadow-sm transition-all"
+                      className="group flex items-center gap-4 p-4 bg-white rounded-xl border border-himanshu-border/40 hover:border-himanshu-accent/30 hover:shadow-sm transition-all"
                     >
-                      <div className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-vridhira-surface border border-vridhira-border text-vridhira-accent group-hover:scale-105 transition-transform">
+                      <div className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center bg-himanshu-surface border border-himanshu-border text-himanshu-accent group-hover:scale-105 transition-transform">
                         <ArticleIcon />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-dm font-semibold text-[13px] text-vridhira-text group-hover:text-vridhira-accent transition-colors truncate">
+                        <p className="font-dm font-semibold text-[13px] text-himanshu-text group-hover:text-himanshu-accent transition-colors truncate">
                           {rel.title}
                         </p>
-                        <p className="font-dm text-xs text-vridhira-muted mt-0.5 truncate">
+                        <p className="font-dm text-xs text-himanshu-muted mt-0.5 truncate">
                           {rel.description}
                         </p>
                       </div>
@@ -327,12 +327,12 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
       </div>
 
       {/* ── Bottom CTA ───────────────────────────────────────────────────── */}
-      <div className="border-t border-vridhira-border/60 mt-4 py-16">
+      <div className="border-t border-himanshu-border/60 mt-4 py-16">
         <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-2xl md:text-3xl font-semibold mb-3 text-vridhira-text">
+          <h2 className="font-serif text-2xl md:text-3xl font-semibold mb-3 text-himanshu-text">
             Was this article helpful?
           </h2>
-          <p className="font-dm text-sm text-vridhira-muted mb-8">
+          <p className="font-dm text-sm text-himanshu-muted mb-8">
             If you&apos;re still stuck, our support team is one click away.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -345,7 +345,7 @@ export default function ArticleDetailTemplate({ articleId }: Props) {
             </Link>
             <Link
               href="/help-center"
-              className="inline-flex justify-center items-center gap-2 rounded-full bg-white px-8 py-3 text-base font-semibold text-vridhira-text border border-vridhira-border hover:border-vridhira-accent/50 transition-all"
+              className="inline-flex justify-center items-center gap-2 rounded-full bg-white px-8 py-3 text-base font-semibold text-himanshu-text border border-himanshu-border hover:border-himanshu-accent/50 transition-all"
             >
               Browse Help Center
             </Link>

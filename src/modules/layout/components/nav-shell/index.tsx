@@ -716,12 +716,12 @@ export default function NavShell({ sideMenu, cartButton }: Props) {
 
               {/* Center: Logo — absolutely centered */}
               <div className="absolute left-1/2 -translate-x-1/2">
-                <LocalizedClientLink href="/" aria-label="Vridhira — Home">
+                <LocalizedClientLink href="/" aria-label="himanshu — Home">
                   {/* color: inherit picks up the white from nvsh-content → difference blend inverts */}
                   <span
                     className="nvsh-logo font-serif text-xl tracking-widest select-none whitespace-nowrap"
                   >
-                    Vridhira
+                    himanshu
                   </span>
                 </LocalizedClientLink>
               </div>

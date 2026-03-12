@@ -1,17 +1,17 @@
 /**
  * ============================================================
- * VRIDHIRA — E-Commerce for Indian Artisans
+ * himanshu — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
- * @repo        https://github.com/Newbie-Himanshu/vridhira-frontend
- * @copyright   2026 Himanshu — Vridhira. All rights reserved.
+ * @repo        https://github.com/Newbie-Himanshu/himanshu-frontend
+ * @copyright   2026 Himanshu — himanshu. All rights reserved.
  * @license     MIT
  * ------------------------------------------------------------
  * @lastModifiedBy  Himanshu
  * @modifiedWith    GitHub Copilot
  * @modifiedOn      2026-03-06
- * @changeNote      Added Vridhira credit block
+ * @changeNote      Added himanshu credit block
  * ============================================================
  */
 

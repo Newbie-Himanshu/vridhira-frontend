@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * VRIDHIRA — E-Commerce for Indian Artisans
+ * himanshu — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
@@ -8,7 +8,7 @@
  * @license     SEE LICENSE IN LICENSE
  * @modifiedWith    Antigravity
  * @modifiedOn      2026-03-06
- * @changeNote      Earthy Vridhira CTA banner — artisan story section
+ * @changeNote      Earthy himanshu CTA banner — artisan story section
  * ============================================================
  */
 

@@ -1,12 +1,12 @@
 {
-  "name": "vridhira-storefront",
+  "name": "e-commerce-storefront",
   "version": "1.0.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
-  "author": "Himanshu — Vridhira <https://github.com/Newbie-Himanshu>",
-  "description": "Vridhira — E-Commerce Storefront for Indian Artisans",
+  "author": "Himanshu — himanshu <https://github.com/Newbie-Himanshu>",
+  "description": "himanshu — E-Commerce Storefront for Indian Artisans",
   "keywords": [
-    "vridhira",
+    "himanshu",
     "e-commerce",
     "indian-artisans",
     "medusa-storefront"

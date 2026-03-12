@@ -2,7 +2,7 @@
  * Frontend Store Components - Category Browsing
  * These components are for your storefront (Next.js app)
  *
- * Place in: vridhira-storefront/src/components/categories/
+ * Place in: e-commerce-storefront/src/components/categories/
  */
 
 "use client"

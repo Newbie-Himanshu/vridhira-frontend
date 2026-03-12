@@ -2,11 +2,11 @@
 
 /**
  * ============================================================
- * VRIDHIRA — E-Commerce for Indian Artisans
+ * himanshu — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
- * @repo        https://github.com/Newbie-Himanshu/vridhira-frontend
+ * @repo        https://github.com/Newbie-Himanshu/himanshu-frontend
  * @copyright   2026 Himanshu. All rights reserved.
  * @license     SEE LICENSE IN LICENSE
  * ------------------------------------------------------------
@@ -207,7 +207,7 @@ const Hero = () => {
       id="hero"
       ref={sectionRef}
       className="relative min-h-screen flex items-center overflow-hidden"
-      aria-label="Vridhira — Homepage hero"
+      aria-label="himanshu — Homepage hero"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ background: "linear-gradient(135deg, #FAF7F2 0%, #F5EFE7 40%, #EDE0D0 70%, #E8D4BC 100%)" }}
@@ -346,7 +346,7 @@ const Hero = () => {
 
               {/* Eyebrow */}
               <span
-                className={`hero-fade${entered ? " entered" : ""} inline-block text-xs font-semibold tracking-[0.25em] uppercase text-vridhira-accent mb-6 pl-8`}
+                className={`hero-fade${entered ? " entered" : ""} inline-block text-xs font-semibold tracking-[0.25em] uppercase text-himanshu-accent mb-6 pl-8`}
                 style={{ animationDelay: "0.08s" }}
               >
                 🇮🇳 &nbsp;India's Artisan Marketplace
@@ -356,13 +356,13 @@ const Hero = () => {
                    Each word is an independent .hero-word span hidden by default.
                    Adding .entered triggers hero-word-in with a staggered delay
                    computed from the word's global index across all lines.     */}
-              <h1 className="font-serif text-[34px] sm:text-[46px] lg:text-[58px] leading-[1.08] text-vridhira-text mb-6 pl-8">
+              <h1 className="font-serif text-[34px] sm:text-[46px] lg:text-[58px] leading-[1.08] text-himanshu-text mb-6 pl-8">
                 {HEADLINE_LINES.map((line, li) => (
                   <span key={li} className="block">
                     {line.words.map((word, wi) => (
                       <span
                         key={`${li}-${wi}`}
-                        className={`hero-word${entered ? " entered" : ""} mr-[0.26em]${line.accent ? " text-vridhira-primary" : ""}`}
+                        className={`hero-word${entered ? " entered" : ""} mr-[0.26em]${line.accent ? " text-himanshu-primary" : ""}`}
                         style={{ animationDelay: `${0.28 + (line.idx + wi) * 0.09}s` }}
                       >
                         {word}
@@ -374,7 +374,7 @@ const Hero = () => {
 
               {/* Sub-tagline */}
               <p
-                className={`hero-fade${entered ? " entered" : ""} text-xs sm:text-sm text-vridhira-muted leading-relaxed max-w-md mb-10 pl-8`}
+                className={`hero-fade${entered ? " entered" : ""} text-xs sm:text-sm text-himanshu-muted leading-relaxed max-w-md mb-10 pl-8`}
                 style={{ animationDelay: "0.88s" }}
               >
                 Discover authentic handmade goods directly from India's artisans and
@@ -408,7 +408,7 @@ const Hero = () => {
 
                 <LocalizedClientLink
                   href="/collections"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold tracking-wide border-2 border-vridhira-primary text-vridhira-primary bg-transparent hover:bg-vridhira-primary hover:text-white transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold tracking-wide border-2 border-himanshu-primary text-himanshu-primary bg-transparent hover:bg-himanshu-primary hover:text-white transition-all duration-200"
                 >
                   Browse Collections
                 </LocalizedClientLink>
@@ -424,14 +424,14 @@ const Hero = () => {
               {/* Outer compass ring — clockwise slow spin */}
               <div
                 aria-hidden="true"
-                className="absolute inset-0 m-auto w-72 h-72 rounded-full border border-vridhira-border opacity-35 pointer-events-none"
+                className="absolute inset-0 m-auto w-72 h-72 rounded-full border border-himanshu-border opacity-35 pointer-events-none"
                 style={{ animation: "hero-spin-cw 36s linear infinite" }}
               >
                 {/* 8 radial tick marks */}
                 {Array.from({ length: 8 }).map((_, i) => (
                   <div
                     key={i}
-                    className="absolute w-[2px] h-3 bg-vridhira-muted rounded-full opacity-60"
+                    className="absolute w-[2px] h-3 bg-himanshu-muted rounded-full opacity-60"
                     style={{
                       top: "50%", left: "50%",
                       transform: `translate(-50%,-50%) rotate(${i * 45}deg) translateY(-144px)`,
@@ -479,7 +479,7 @@ const Hero = () => {
               >
                 <div>
                   <div className="font-serif text-2xl font-bold leading-none">V</div>
-                  <div className="text-[9px] tracking-[0.2em] uppercase mt-1 opacity-80">Vridhira</div>
+                  <div className="text-[9px] tracking-[0.2em] uppercase mt-1 opacity-80">himanshu</div>
                 </div>
               </div>
             </div>
@@ -492,13 +492,13 @@ const Hero = () => {
       <button
         onClick={handleGlide}
         aria-label="Scroll to next section"
-        className={`hero-fade${entered ? " entered" : ""} absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-vridhira-muted bg-transparent border-0 p-2 cursor-pointer group`}
+        className={`hero-fade${entered ? " entered" : ""} absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-himanshu-muted bg-transparent border-0 p-2 cursor-pointer group`}
         style={{ zIndex: 2, animationDelay: "1.5s" }}
       >
         <span className="text-[10px] tracking-[0.2em] uppercase font-semibold opacity-70 transition-opacity duration-200 group-hover:opacity-100">Scroll</span>
-        <div className="w-px h-12 bg-vridhira-border relative overflow-hidden">
+        <div className="w-px h-12 bg-himanshu-border relative overflow-hidden">
           <div
-            className="absolute top-0 left-0 w-full h-1/2 bg-vridhira-primary"
+            className="absolute top-0 left-0 w-full h-1/2 bg-himanshu-primary"
             style={{ animation: "hero-scroll-drop 2s ease-in-out infinite" }}
           />
         </div>

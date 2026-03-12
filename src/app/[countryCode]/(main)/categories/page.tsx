@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import CategoriesTemplate from "@modules/categories/templates/categories-template"
 
 export const metadata: Metadata = {
-  title: "Categories | Vridhira",
+  title: "Categories | himanshu",
   description: "Browse all handcrafted categories from Indian artisans — pottery, textiles, jewellery, woodcraft and more.",
 }
 

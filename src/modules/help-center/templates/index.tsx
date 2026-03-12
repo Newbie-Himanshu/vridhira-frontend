@@ -142,20 +142,20 @@ function ArticleListItem({ article }: { article: FAQArticle }) {
   return (
     <Link
       href={`/help-center/${article.id}`}
-      className="group flex items-center gap-6 p-5 rounded-2xl hover:bg-vridhira-surface transition-all border border-transparent hover:border-vridhira-border/40"
+      className="group flex items-center gap-6 p-5 rounded-2xl hover:bg-himanshu-surface transition-all border border-transparent hover:border-himanshu-border/40"
     >
-      <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-vridhira-surface border border-vridhira-border text-vridhira-accent group-hover:scale-105 transition-transform">
+      <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-himanshu-surface border border-himanshu-border text-himanshu-accent group-hover:scale-105 transition-transform">
         <ArticleIcon />
       </div>
       <div className="flex-1 min-w-0">
-        <h4 className="font-dm font-semibold text-[15px] text-vridhira-text truncate group-hover:text-vridhira-accent transition-colors">
+        <h4 className="font-dm font-semibold text-[15px] text-himanshu-text truncate group-hover:text-himanshu-accent transition-colors">
           {article.title}
         </h4>
-        <p className="font-dm text-xs text-vridhira-muted mt-0.5 truncate">
+        <p className="font-dm text-xs text-himanshu-muted mt-0.5 truncate">
           {article.description}
         </p>
       </div>
-      <span className="text-vridhira-border group-hover:text-vridhira-accent transition-colors">
+      <span className="text-himanshu-border group-hover:text-himanshu-accent transition-colors">
         <ArrowRightIcon />
       </span>
     </Link>
@@ -182,13 +182,13 @@ export default function HelpCenterTemplate({ section, q }: Props) {
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <div className="relative w-full py-24 flex items-center justify-center" style={{ paddingTop: 112 }}>
         <div className="w-full max-w-4xl px-6 text-center flex flex-col items-center">
-          <span className="inline-block py-1.5 px-4 rounded-full bg-vridhira-accent/5 border border-vridhira-accent/20 text-vridhira-accent font-dm text-[10px] font-bold tracking-[0.15em] uppercase mb-4">
+          <span className="inline-block py-1.5 px-4 rounded-full bg-himanshu-accent/5 border border-himanshu-accent/20 text-himanshu-accent font-dm text-[10px] font-bold tracking-[0.15em] uppercase mb-4">
             Help Center
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.1] tracking-tight text-vridhira-text max-w-2xl mx-auto">
+          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.1] tracking-tight text-himanshu-text max-w-2xl mx-auto">
             How can we help?
           </h1>
-          <p className="font-dm text-base text-vridhira-muted max-w-lg mx-auto mt-4 leading-relaxed">
+          <p className="font-dm text-base text-himanshu-muted max-w-lg mx-auto mt-4 leading-relaxed">
             Find answers about orders, shipping, and managing your unique artisan shop.
           </p>
 
@@ -200,14 +200,14 @@ export default function HelpCenterTemplate({ section, q }: Props) {
       </div>
 
       {/* ── Breadcrumb strip ─────────────────────────────────────────────── */}
-      <div className="border-y border-vridhira-border/40 bg-white/60 backdrop-blur-sm">
+      <div className="border-y border-himanshu-border/40 bg-white/60 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-2.5">
           <nav className="flex flex-wrap items-center gap-1" aria-label="breadcrumb">
 
             {/* Home */}
             <Link
               href="/"
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-vridhira-muted hover:text-vridhira-accent hover:bg-vridhira-surface transition-all"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-himanshu-muted hover:text-himanshu-accent hover:bg-himanshu-surface transition-all"
             >
               <svg className="w-3.5 h-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
@@ -216,17 +216,17 @@ export default function HelpCenterTemplate({ section, q }: Props) {
             </Link>
 
             {/* Chevron */}
-            <svg className="w-3 h-3 text-vridhira-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+            <svg className="w-3 h-3 text-himanshu-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
 
             {/* Help Center */}
             {!section || section === "all" ? (
-              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-vridhira-accent bg-vridhira-accent/8 border border-vridhira-accent/20">
+              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-himanshu-accent bg-himanshu-accent/8 border border-himanshu-accent/20">
                 Help Center
               </span>
             ) : (
               <Link
                 href="/help-center"
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-vridhira-muted hover:text-vridhira-accent hover:bg-vridhira-surface transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-himanshu-muted hover:text-himanshu-accent hover:bg-himanshu-surface transition-all"
               >
                 Help Center
               </Link>
@@ -235,8 +235,8 @@ export default function HelpCenterTemplate({ section, q }: Props) {
             {/* Section */}
             {section && section !== "all" && !q && (
               <>
-                <svg className="w-3 h-3 text-vridhira-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
-                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-vridhira-accent bg-vridhira-accent/8 border border-vridhira-accent/20 capitalize">
+                <svg className="w-3 h-3 text-himanshu-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-himanshu-accent bg-himanshu-accent/8 border border-himanshu-accent/20 capitalize">
                   {SIDEBAR_SECTIONS.find((s) => s.id === section)?.label ?? section}
                 </span>
               </>
@@ -245,8 +245,8 @@ export default function HelpCenterTemplate({ section, q }: Props) {
             {/* Search */}
             {q && (
               <>
-                <svg className="w-3 h-3 text-vridhira-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
-                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-vridhira-accent bg-vridhira-accent/8 border border-vridhira-accent/20">
+                <svg className="w-3 h-3 text-himanshu-border flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold text-himanshu-accent bg-himanshu-accent/8 border border-himanshu-accent/20">
                   <svg className="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
                   &ldquo;{q}&rdquo;
                 </span>
@@ -265,7 +265,7 @@ export default function HelpCenterTemplate({ section, q }: Props) {
           <aside className="w-full lg:w-64 flex-shrink-0 order-2 lg:order-1">
             <div className="sticky top-28 space-y-6">
               <div>
-                <h3 className="font-dm text-[11px] font-bold tracking-[0.1em] uppercase text-vridhira-muted/70 mb-4 px-4">
+                <h3 className="font-dm text-[11px] font-bold tracking-[0.1em] uppercase text-himanshu-muted/70 mb-4 px-4">
                   Navigation
                 </h3>
                 <nav className="space-y-1" aria-label="Help Center sections">
@@ -278,8 +278,8 @@ export default function HelpCenterTemplate({ section, q }: Props) {
                         href={href}
                         className={`group flex items-center gap-3 px-4 py-2.5 rounded-lg font-dm text-sm transition-all ${
                           isActive
-                            ? "bg-vridhira-surface text-vridhira-accent font-medium"
-                            : "text-vridhira-muted hover:bg-vridhira-surface hover:text-vridhira-accent"
+                            ? "bg-himanshu-surface text-himanshu-accent font-medium"
+                            : "text-himanshu-muted hover:bg-himanshu-surface hover:text-himanshu-accent"
                         }`}
                         aria-current={isActive ? "page" : undefined}
                       >
@@ -292,16 +292,16 @@ export default function HelpCenterTemplate({ section, q }: Props) {
               </div>
 
               {/* Contact card */}
-              <div className="p-6 bg-white rounded-2xl border border-vridhira-border/50 shadow-sm">
-                <h4 className="font-serif font-semibold text-base mb-1.5 text-vridhira-text">
+              <div className="p-6 bg-white rounded-2xl border border-himanshu-border/50 shadow-sm">
+                <h4 className="font-serif font-semibold text-base mb-1.5 text-himanshu-text">
                   Need personal help?
                 </h4>
-                <p className="font-dm text-[13px] text-vridhira-muted mb-4 leading-relaxed">
+                <p className="font-dm text-[13px] text-himanshu-muted mb-4 leading-relaxed">
                   Our support team is here to assist with your specific inquiries.
                 </p>
                 <Link
                   href="/account"
-                  className="block text-center w-full py-2 px-4 bg-transparent border border-vridhira-text/20 text-vridhira-text hover:border-vridhira-accent hover:text-vridhira-accent rounded-lg text-sm font-medium transition-all"
+                  className="block text-center w-full py-2 px-4 bg-transparent border border-himanshu-text/20 text-himanshu-text hover:border-himanshu-accent hover:text-himanshu-accent rounded-lg text-sm font-medium transition-all"
                 >
                   Contact Support
                 </Link>
@@ -315,18 +315,18 @@ export default function HelpCenterTemplate({ section, q }: Props) {
             {/* ── Search results ──────────────────────────────────────── */}
             {searchResults !== null && (
               <section className="mb-16">
-                <div className="flex items-end justify-between mb-8 pb-4 border-b border-vridhira-border/40">
+                <div className="flex items-end justify-between mb-8 pb-4 border-b border-himanshu-border/40">
                   <div>
-                    <h2 className="font-serif text-3xl md:text-4xl font-semibold text-vridhira-text">
+                    <h2 className="font-serif text-3xl md:text-4xl font-semibold text-himanshu-text">
                       Search results
                     </h2>
-                    <p className="font-dm text-sm text-vridhira-muted mt-2">
+                    <p className="font-dm text-sm text-himanshu-muted mt-2">
                       {searchResults.length === 0
                         ? `No results for "${q}"`
                         : `${searchResults.length} result${searchResults.length !== 1 ? "s" : ""} for "${q}"`}
                     </p>
                   </div>
-                  <Link href="/help-center" className="font-dm text-xs text-vridhira-accent hover:text-vridhira-primary font-semibold transition-colors">
+                  <Link href="/help-center" className="font-dm text-xs text-himanshu-accent hover:text-himanshu-primary font-semibold transition-colors">
                     Clear search
                   </Link>
                 </div>
@@ -338,7 +338,7 @@ export default function HelpCenterTemplate({ section, q }: Props) {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-16 text-vridhira-muted">
+                  <div className="text-center py-16 text-himanshu-muted">
                     <svg className="w-12 h-12 mx-auto mb-4 opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
                     </svg>
@@ -346,7 +346,7 @@ export default function HelpCenterTemplate({ section, q }: Props) {
                     <p className="font-dm text-sm mt-2">Try different keywords or browse topics below.</p>
                     <Link
                       href="/help-center"
-                      className="mt-6 inline-flex items-center gap-2 text-sm text-vridhira-accent hover:underline"
+                      className="mt-6 inline-flex items-center gap-2 text-sm text-himanshu-accent hover:underline"
                     >
                       Browse all topics
                     </Link>
@@ -358,16 +358,16 @@ export default function HelpCenterTemplate({ section, q }: Props) {
             {/* ── Section-filtered articles ────────────────────────────── */}
             {sectionArticles !== null && (
               <section className="mb-16">
-                <div className="flex items-end justify-between mb-8 pb-4 border-b border-vridhira-border/40">
+                <div className="flex items-end justify-between mb-8 pb-4 border-b border-himanshu-border/40">
                   <div>
-                    <h2 className="font-serif text-3xl md:text-4xl font-semibold text-vridhira-text capitalize">
+                    <h2 className="font-serif text-3xl md:text-4xl font-semibold text-himanshu-text capitalize">
                       {TOPICS.find((t) => t.id === section)?.title ?? section}
                     </h2>
-                    <p className="font-dm text-sm text-vridhira-muted mt-2">
+                    <p className="font-dm text-sm text-himanshu-muted mt-2">
                       {sectionArticles.length} article{sectionArticles.length !== 1 ? "s" : ""}
                     </p>
                   </div>
-                  <Link href="/help-center" className="font-dm text-xs text-vridhira-accent hover:text-vridhira-primary font-semibold transition-colors">
+                  <Link href="/help-center" className="font-dm text-xs text-himanshu-accent hover:text-himanshu-primary font-semibold transition-colors">
                     ← All topics
                   </Link>
                 </div>
@@ -384,10 +384,10 @@ export default function HelpCenterTemplate({ section, q }: Props) {
               <>
                 {/* Topics */}
                 <section className="mb-16">
-                  <div className="flex items-end justify-between mb-8 pb-4 border-b border-vridhira-border/40">
+                  <div className="flex items-end justify-between mb-8 pb-4 border-b border-himanshu-border/40">
                     <div>
-                      <h2 className="font-serif text-3xl md:text-4xl font-semibold text-vridhira-text">Topics</h2>
-                      <p className="font-dm text-sm text-vridhira-muted mt-2">Select a category to explore</p>
+                      <h2 className="font-serif text-3xl md:text-4xl font-semibold text-himanshu-text">Topics</h2>
+                      <p className="font-dm text-sm text-himanshu-muted mt-2">Select a category to explore</p>
                     </div>
                   </div>
 
@@ -396,15 +396,15 @@ export default function HelpCenterTemplate({ section, q }: Props) {
                       <Link
                         key={topic.id}
                         href={`/help-center?section=${topic.id}`}
-                        className="group flex flex-col p-6 bg-white rounded-2xl border border-vridhira-border/40 hover:border-vridhira-accent/30 shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-all duration-300"
+                        className="group flex flex-col p-6 bg-white rounded-2xl border border-himanshu-border/40 hover:border-himanshu-accent/30 shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-all duration-300"
                       >
-                        <div className="mb-5 text-vridhira-muted group-hover:text-vridhira-accent transition-colors">
+                        <div className="mb-5 text-himanshu-muted group-hover:text-himanshu-accent transition-colors">
                           <TopicIcon id={topic.id} />
                         </div>
-                        <h3 className="font-dm text-base font-bold text-vridhira-text mb-2">
+                        <h3 className="font-dm text-base font-bold text-himanshu-text mb-2">
                           {topic.title}
                         </h3>
-                        <p className="font-dm text-[13px] text-vridhira-muted leading-relaxed">
+                        <p className="font-dm text-[13px] text-himanshu-muted leading-relaxed">
                           {topic.description}
                         </p>
                       </Link>
@@ -413,13 +413,13 @@ export default function HelpCenterTemplate({ section, q }: Props) {
                 </section>
 
                 {/* Most Viewed */}
-                <section className="bg-white rounded-3xl p-10 shadow-sm border border-vridhira-border/40">
+                <section className="bg-white rounded-3xl p-10 shadow-sm border border-himanshu-border/40">
                   <div className="flex items-baseline justify-between mb-8">
-                    <h2 className="font-serif text-3xl md:text-4xl font-semibold text-vridhira-text">
+                    <h2 className="font-serif text-3xl md:text-4xl font-semibold text-himanshu-text">
                     </h2>
                     <Link
                       href="/help-center?section=buying"
-                      className="text-sm font-semibold text-vridhira-accent hover:text-vridhira-primary transition-colors tracking-wide"
+                      className="text-sm font-semibold text-himanshu-accent hover:text-himanshu-primary transition-colors tracking-wide"
                     >
                       View all articles →
                     </Link>
@@ -438,9 +438,9 @@ export default function HelpCenterTemplate({ section, q }: Props) {
       </div>
 
       {/* ── Bottom CTA ───────────────────────────────────────────────────── */}
-      <div className="border-t border-vridhira-border/60 mt-8 py-20">
+      <div className="border-t border-himanshu-border/60 mt-8 py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <div className="mb-6 flex justify-center text-vridhira-accent opacity-80">
+          <div className="mb-6 flex justify-center text-himanshu-accent opacity-80">
             <svg className="w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
               <path d="M4.93 4.93 19.07 19.07" />
@@ -449,10 +449,10 @@ export default function HelpCenterTemplate({ section, q }: Props) {
               <circle cx="12" cy="12" r="2" />
             </svg>
           </div>
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4 text-vridhira-text">
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4 text-himanshu-text">
             Still can&apos;t find what you need?
           </h2>
-          <p className="font-dm text-base text-vridhira-muted mb-10 max-w-lg mx-auto">
+          <p className="font-dm text-base text-himanshu-muted mb-10 max-w-lg mx-auto">
             Our dedicated support team is available to assist with your creative journey.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -465,7 +465,7 @@ export default function HelpCenterTemplate({ section, q }: Props) {
             </Link>
             <Link
               href="/"
-              className="inline-flex justify-center items-center gap-2 rounded-full bg-white px-8 py-3 text-base font-semibold text-vridhira-text border border-vridhira-border hover:border-vridhira-accent/50 transition-all"
+              className="inline-flex justify-center items-center gap-2 rounded-full bg-white px-8 py-3 text-base font-semibold text-himanshu-text border border-himanshu-border hover:border-himanshu-accent/50 transition-all"
             >
               Visit Community Forum
             </Link>

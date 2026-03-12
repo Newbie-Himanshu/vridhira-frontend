@@ -3,9 +3,9 @@ import { Metadata } from "next"
 import HelpCenterTemplate from "@modules/help-center/templates"
 
 export const metadata: Metadata = {
-  title: "Help Center | Vridhira",
+  title: "Help Center | himanshu",
   description:
-    "Find answers about orders, shipping, returns, payments and managing your Vridhira account.",
+    "Find answers about orders, shipping, returns, payments and managing your himanshu account.",
 }
 
 type Params = {
