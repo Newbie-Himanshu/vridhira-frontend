@@ -6,7 +6,7 @@
  * @github      https://github.com/Newbie-Himanshu
  * @repo        https://github.com/Newbie-Himanshu/frontend
  * @copyright   2026 Himanshu — Himanshu. All rights reserved.
- * @license     MIT
+ * @license     Dual-License (Community/Commercial) v2.0
  * ------------------------------------------------------------
  * @lastModifiedBy  Himanshu
  * @modifiedWith    GitHub Copilot

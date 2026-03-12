@@ -5,7 +5,7 @@
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
  * @copyright   2026 Himanshu. All rights reserved.
- * @license     SEE LICENSE IN LICENSE
+ * @license     Dual-License (Community/Commercial) v2.0 — SEE LICENSE
  * @modifiedWith    Antigravity
  * @modifiedOn      2026-03-06
  * @changeNote      Earthy Himanshu CTA banner — artisan story section
