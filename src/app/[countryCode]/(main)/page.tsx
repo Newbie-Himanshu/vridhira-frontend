@@ -9,7 +9,7 @@ import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
 export const metadata: Metadata = {
-  title: "Vridhira — India's Artisan Marketplace",
+  title: "Himanshu — India's Artisan Marketplace",
   description:
     "Handcrafted with soul. Delivered to your door. Shop authentic Indian handcraft — textiles, pottery, jewellery, woodcraft and more.",
 }

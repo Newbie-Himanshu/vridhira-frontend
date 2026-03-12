@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * VRIDHIRA — E-Commerce for Indian Artisans
+ * HIMANSHU — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu

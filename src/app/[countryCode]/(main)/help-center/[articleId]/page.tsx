@@ -20,11 +20,11 @@ export function generateStaticParams() {
 export async function generateMetadata(props: Params): Promise<Metadata> {
   const { articleId } = await props.params
   const article = getArticleById(articleId)
-  if (!article) return { title: "Not Found | Vridhira Help Center" }
+  if (!article) return { title: "Not Found | Himanshu Help Center" }
 
   const sectionLabel = getSectionLabel(article.section)
   return {
-    title: `${article.title} | ${sectionLabel} | Vridhira Help Center`,
+    title: `${article.title} | ${sectionLabel} | Himanshu Help Center`,
     description: article.description,
   }
 }

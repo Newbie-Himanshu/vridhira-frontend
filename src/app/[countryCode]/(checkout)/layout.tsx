@@ -30,7 +30,7 @@ export default function CheckoutLayout({
             className="font-serif text-2xl font-semibold text-[#2C1810] tracking-wide hover:text-[#C9762B] transition-colors"
             data-testid="store-link"
           >
-            Vridhira
+            Himanshu
           </LocalizedClientLink>
           <div className="flex-1 basis-0" />
         </nav>

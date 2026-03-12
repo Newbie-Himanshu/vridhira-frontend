@@ -91,8 +91,8 @@ export function AskFormClient() {
           </svg>
         </div>
         <div>
-          <p className="font-serif font-semibold text-2xl text-vridhira-text">Question submitted!</p>
-          <p className="font-dm text-sm text-vridhira-muted mt-2 max-w-sm mx-auto">
+          <p className="font-serif font-semibold text-2xl text-himanshu-text">Question submitted!</p>
+          <p className="font-dm text-sm text-himanshu-muted mt-2 max-w-sm mx-auto">
             We&apos;ve received your question about &ldquo;{state.subject}&rdquo;.
             Our team will get back to you as soon as possible.
           </p>
@@ -100,7 +100,7 @@ export function AskFormClient() {
         <div className="flex flex-col sm:flex-row gap-3">
           <LocalizedClientLink
             href="/help-center"
-            className="font-dm text-sm font-semibold px-6 py-3 rounded-xl border border-vridhira-border hover:bg-vridhira-surface transition-colors"
+            className="font-dm text-sm font-semibold px-6 py-3 rounded-xl border border-himanshu-border hover:bg-himanshu-surface transition-colors"
             style={{ color: "#2C1810" }}
           >
             ← Back to Help Center
@@ -143,7 +143,7 @@ export function AskFormClient() {
       {/* Row 1 — name + email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <label className="flex flex-col gap-1.5">
-          <span className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-vridhira-muted/70">
+          <span className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-himanshu-muted/70">
             Your name <span aria-hidden="true" style={{ color: "#C9762B" }}>*</span>
           </span>
           <input
@@ -154,15 +154,15 @@ export function AskFormClient() {
             maxLength={100}
             placeholder="Priya Sharma"
             disabled={isSubmitting}
-            className="font-dm text-sm w-full h-11 px-4 rounded-xl border border-vridhira-border bg-white
-                       text-vridhira-text placeholder:text-vridhira-muted/40
-                       focus:outline-none focus:ring-2 focus:ring-vridhira-accent/30 focus:border-vridhira-accent
+            className="font-dm text-sm w-full h-11 px-4 rounded-xl border border-himanshu-border bg-white
+                       text-himanshu-text placeholder:text-himanshu-muted/40
+                       focus:outline-none focus:ring-2 focus:ring-himanshu-accent/30 focus:border-himanshu-accent
                        disabled:opacity-50 transition-all"
           />
         </label>
 
         <label className="flex flex-col gap-1.5">
-          <span className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-vridhira-muted/70">
+          <span className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-himanshu-muted/70">
             Email address <span aria-hidden="true" style={{ color: "#C9762B" }}>*</span>
           </span>
           <input
@@ -172,9 +172,9 @@ export function AskFormClient() {
             maxLength={254}
             placeholder="priya@example.com"
             disabled={isSubmitting}
-            className="font-dm text-sm w-full h-11 px-4 rounded-xl border border-vridhira-border bg-white
-                       text-vridhira-text placeholder:text-vridhira-muted/40
-                       focus:outline-none focus:ring-2 focus:ring-vridhira-accent/30 focus:border-vridhira-accent
+            className="font-dm text-sm w-full h-11 px-4 rounded-xl border border-himanshu-border bg-white
+                       text-himanshu-text placeholder:text-himanshu-muted/40
+                       focus:outline-none focus:ring-2 focus:ring-himanshu-accent/30 focus:border-himanshu-accent
                        disabled:opacity-50 transition-all"
           />
         </label>
@@ -182,7 +182,7 @@ export function AskFormClient() {
 
       {/* Row 2 — subject */}
       <label className="flex flex-col gap-1.5">
-        <span className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-vridhira-muted/70">
+        <span className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-himanshu-muted/70">
           Subject <span aria-hidden="true" style={{ color: "#C9762B" }}>*</span>
         </span>
         <input
@@ -193,16 +193,16 @@ export function AskFormClient() {
           maxLength={150}
           placeholder="e.g. Where is my order?"
           disabled={isSubmitting}
-          className="font-dm text-sm w-full h-11 px-4 rounded-xl border border-vridhira-border bg-white
-                     text-vridhira-text placeholder:text-vridhira-muted/40
-                     focus:outline-none focus:ring-2 focus:ring-vridhira-accent/30 focus:border-vridhira-accent
+          className="font-dm text-sm w-full h-11 px-4 rounded-xl border border-himanshu-border bg-white
+                     text-himanshu-text placeholder:text-himanshu-muted/40
+                     focus:outline-none focus:ring-2 focus:ring-himanshu-accent/30 focus:border-himanshu-accent
                      disabled:opacity-50 transition-all"
         />
       </label>
 
       {/* Row 3 — question */}
       <label className="flex flex-col gap-1.5">
-        <span className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-vridhira-muted/70">
+        <span className="font-dm text-[11px] font-bold uppercase tracking-[0.1em] text-himanshu-muted/70">
           Your question <span aria-hidden="true" style={{ color: "#C9762B" }}>*</span>
         </span>
         <textarea
@@ -213,12 +213,12 @@ export function AskFormClient() {
           rows={6}
           placeholder="Please describe your question in detail…"
           disabled={isSubmitting}
-          className="font-dm text-sm w-full px-4 py-3 rounded-xl border border-vridhira-border bg-white
-                     text-vridhira-text placeholder:text-vridhira-muted/40 resize-y min-h-[120px]
-                     focus:outline-none focus:ring-2 focus:ring-vridhira-accent/30 focus:border-vridhira-accent
+          className="font-dm text-sm w-full px-4 py-3 rounded-xl border border-himanshu-border bg-white
+                     text-himanshu-text placeholder:text-himanshu-muted/40 resize-y min-h-[120px]
+                     focus:outline-none focus:ring-2 focus:ring-himanshu-accent/30 focus:border-himanshu-accent
                      disabled:opacity-50 transition-all"
         />
-        <span className="font-dm text-[11px] text-vridhira-muted/50 text-right">max 2000 characters</span>
+        <span className="font-dm text-[11px] text-himanshu-muted/50 text-right">max 2000 characters</span>
       </label>
 
       {/* Submit */}
@@ -242,9 +242,9 @@ export function AskFormClient() {
         )}
       </button>
 
-      <p className="font-dm text-[11px] text-vridhira-muted/50 text-center leading-relaxed">
+      <p className="font-dm text-[11px] text-himanshu-muted/50 text-center leading-relaxed">
         By submitting, you agree to our{" "}
-        <LocalizedClientLink href="/" className="underline hover:text-vridhira-accent">
+        <LocalizedClientLink href="/" className="underline hover:text-himanshu-accent">
           Privacy Policy
         </LocalizedClientLink>
         . We typically respond within 1–2 business days.

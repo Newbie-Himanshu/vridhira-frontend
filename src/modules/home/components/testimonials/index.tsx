@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * VRIDHIRA — E-Commerce for Indian Artisans
+ * HIMANSHU — E-Commerce for Indian Artisans
  * ============================================================
  * @author      Himanshu
  * @github      https://github.com/Newbie-Himanshu
@@ -8,7 +8,7 @@
  * @license     SEE LICENSE IN LICENSE
  * @modifiedWith    Antigravity
  * @modifiedOn      2026-03-06
- * @changeNote      Auto-scrolling 3-col testimonials with Vridhira artisan reviews
+ * @changeNote      Auto-scrolling 3-col testimonials with Himanshu artisan reviews
  * ============================================================
  */
 
@@ -54,7 +54,7 @@ const testimonials = [
     name: "Meera T.",
     location: "Bangalore",
     rating: 5,
-    text: "I've been searching for authentic tribal jewelry forever — Vridhira is the only place I found real craft without inflated gallery prices.",
+    text: "I've been searching for authentic tribal jewelry forever — Himanshu is the only place I found real craft without inflated gallery prices.",
     product: "Tribal Jewellery",
   },
   {
