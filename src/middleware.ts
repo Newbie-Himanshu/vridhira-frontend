@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
 
 /**
- * MINIMAL middleware - no API calls, no fetching, just pass through
- * Regions will be loaded client-side by pages
+ * Redirect root to default region
  */
 export function middleware(request: NextRequest) {
-  // Pass through all requests - no routing logic, no region fetching
-  // The pages will handle region selection when they load
+  // Redirect / to /in (default region)
+  if (request.nextUrl.pathname === "/") {
+    return NextResponse.redirect(new URL("/in", request.url))
+  }
+
+  // Pass through all other requests
   return NextResponse.next()
 }
 
