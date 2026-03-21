@@ -14,41 +14,28 @@ const regionMapCache = {
 async function getRegionMap(cacheId: string) {
   const { regionMap, regionMapUpdated } = regionMapCache
 
+  // Return cached regions if available and fresh (within 1 hour)
   if (
-    !regionMap.keys().next().value ||
-    regionMapUpdated < Date.now() - 3600 * 1000
+    regionMap.keys().next().value &&
+    regionMapUpdated > Date.now() - 3600 * 1000
   ) {
-    // Fetch regions from local API route (runs in Node.js, not Edge Runtime)
-    // This avoids network restrictions that Edge Runtime has with external HTTPS calls
-    const { regions } = await fetch("http://localhost:3000/api/regions", {
-      next: {
-        revalidate: 3600,
-        tags: [`regions-${cacheId}`],
-      },
-      cache: "force-cache",
-    }).then(async (response) => {
-      const json = await response.json()
+    return regionMap
+  }
 
-      if (!response.ok) {
-        throw new Error(json.message)
-      }
-
-      return json
-    })
-
-    if (!regions?.length) {
-      throw new Error(
-        "No regions found. Please set up regions in your Medusa Admin."
-      )
+  // If cache is empty or stale, use default fallback without fetching
+  // (Middleware runs in Edge context with network restrictions)
+  // Pages will fetch regions server-side and handle rendering
+  if (!regionMap.keys().next().value) {
+    // Pre-populate with default region to prevent crashes
+    const defaultRegion: HttpTypes.StoreRegion = {
+      id: "default",
+      name: DEFAULT_REGION === "in" ? "India" : "US",
+      currency_code: DEFAULT_REGION === "in" ? "INR" : "USD",
+      countries: DEFAULT_REGION === "in" 
+        ? [{ iso_2: "in" }] 
+        : [{ iso_2: "us" }],
     }
-
-    // Create a map of country codes to regions.
-    regions.forEach((region: HttpTypes.StoreRegion) => {
-      region.countries?.forEach((c) => {
-        regionMapCache.regionMap.set(c.iso_2 ?? "", region)
-      })
-    })
-
+    regionMapCache.regionMap.set(DEFAULT_REGION || "in", defaultRegion)
     regionMapCache.regionMapUpdated = Date.now()
   }
 
@@ -111,17 +98,17 @@ export async function middleware(request: NextRequest) {
     regionMap = await getRegionMap(cacheId)
   } catch (e) {
     console.error("Middleware: failed to fetch region map:", e)
-    // If URL already has a country code segment, just let it through
-    const firstSegment = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
-    if (firstSegment && firstSegment.length === 2) {
-      return NextResponse.next()
+    // Always provide a fallback - never let middleware crash the entire app
+    regionMap = new Map()
+    const fallback: HttpTypes.StoreRegion = {
+      id: "fallback",
+      name: DEFAULT_REGION === "in" ? "India" : "US",
+      currency_code: DEFAULT_REGION === "in" ? "INR" : "USD",
+      countries: DEFAULT_REGION === "in" 
+        ? [{ iso_2: "in" }] 
+        : [{ iso_2: "us" }],
     }
-    // Otherwise redirect to default region once
-    const fallback = DEFAULT_REGION || "in"
-    return NextResponse.redirect(
-      `${request.nextUrl.origin}/${fallback}`,
-      307
-    )
+    regionMap.set(DEFAULT_REGION || "in", fallback)
   }
 
   const countryCode = regionMap && (await getCountryCode(request, regionMap))
