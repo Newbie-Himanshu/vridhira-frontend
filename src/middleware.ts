@@ -14,21 +14,13 @@ const regionMapCache = {
 async function getRegionMap(cacheId: string) {
   const { regionMap, regionMapUpdated } = regionMapCache
 
-  if (!BACKEND_URL) {
-    throw new Error(
-      "Middleware.ts: Error fetching regions. Please define one backend URL env var: MEDUSA_BACKEND_URL, NEXT_PUBLIC_MEDUSA_BACKEND_URL, NEXT_PUBLIC_BACKEND_URL, BACKEND_URL, or NEXT_PUBLIC_API_URL."
-    )
-  }
-
   if (
     !regionMap.keys().next().value ||
     regionMapUpdated < Date.now() - 3600 * 1000
   ) {
-    // Fetch regions from Medusa. We can't use the JS client here because middleware is running on Edge and the client needs a Node environment.
-    const { regions } = await fetch(`${BACKEND_URL}/store/regions`, {
-      headers: {
-        "x-publishable-api-key": PUBLISHABLE_API_KEY!,
-      },
+    // Fetch regions from local API route (runs in Node.js, not Edge Runtime)
+    // This avoids network restrictions that Edge Runtime has with external HTTPS calls
+    const { regions } = await fetch("http://localhost:3000/api/regions", {
       next: {
         revalidate: 3600,
         tags: [`regions-${cacheId}`],
